@@ -1,0 +1,47 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+// 1. Generate a path for EVERY post found in src/content/blog
+export async function getStaticPaths() {
+	const posts = await getCollection('blog');
+	return posts.map((post) => ({
+		params: { slug: post.slug },
+		props: post,
+	}));
+}
+
+const post = Astro.props;
+const { Content } = await post.render();
+---
+
+<Layout title={post.data.title}>
+	<article class="max-w-3xl mx-auto py-10">
+        <div class="mb-8 text-center">
+            <span class="text-sm text-gray-500 font-mono">
+                {post.data.pubDate.toLocaleDateString()}
+            </span>
+            <h1 class="text-4xl md:text-5xl font-bold mt-2 mb-4 tracking-tight">
+                {post.data.title}
+            </h1>
+            <div class="flex gap-2 justify-center">
+                {post.data.tags.map(tag => (
+                    <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-md">#{tag}</span>
+                ))}
+            </div>
+        </div>
+        
+        <hr class="border-gray-200 mb-8" />
+
+		<div class="prose prose-lg prose-blue mx-auto prose-headings:font-bold prose-a:text-blue-600 hover:prose-a:text-blue-500">
+			<Content />
+		</div>
+	</article>
+    
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+        integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+        crossorigin="anonymous"
+    />
+</Layout>

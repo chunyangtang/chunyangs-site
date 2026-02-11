@@ -1,0 +1,98 @@
+---
+import { ArrowRight, BookOpen, GraduationCap, Github, Mail, Linkedin, MapPin } from 'lucide-react';
+
+// This is where you can easily update your data later
+const profile = {
+  name: "Chunyang",
+  role: "PhD Researcher",
+  uni: "University", // Replace with your actual university
+  bio: "Exploring the intersection of Optical Computing and Machine Learning. Building robust AI systems with light and logic.",
+};
+---
+
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4 auto-rows-[180px]">
+
+  <div class="md:col-span-2 md:row-span-2 rounded-3xl bg-gray-900 text-white p-8 flex flex-col justify-between relative overflow-hidden group">
+    <div class="absolute top-0 right-0 w-64 h-64 bg-blue-600 rounded-full blur-[100px] opacity-20 -mr-16 -mt-16 transition-opacity group-hover:opacity-30"></div>
+    
+    <div class="z-10">
+      <div class="flex items-center gap-3 mb-4">
+         <span class="px-3 py-1 bg-white/10 rounded-full text-xs font-medium backdrop-blur-sm text-blue-200 border border-white/10">
+           Open for Collaboration
+         </span>
+      </div>
+      <h1 class="text-4xl font-bold tracking-tight mb-2">{profile.name}</h1>
+      <p class="text-xl text-gray-300 font-light mb-6">{profile.role}</p>
+      <p class="text-gray-400 text-sm leading-relaxed max-w-sm">
+        {profile.bio}
+      </p>
+    </div>
+
+    <div class="z-10 flex gap-4 mt-auto">
+        <a href="mailto:your.email@edu.com" class="p-2 bg-white/10 rounded-full hover:bg-white/20 transition-colors">
+            <Mail size={20} />
+        </a>
+        <a href="https://github.com" target="_blank" class="p-2 bg-white/10 rounded-full hover:bg-white/20 transition-colors">
+            <Github size={20} />
+        </a>
+         <a href="https://linkedin.com" target="_blank" class="p-2 bg-white/10 rounded-full hover:bg-white/20 transition-colors">
+            <Linkedin size={20} />
+        </a>
+    </div>
+  </div>
+
+  <a href="/research" class="md:col-span-1 md:row-span-2 rounded-3xl bg-white border border-gray-100 p-6 flex flex-col relative group hover:border-blue-500/50 transition-all hover:shadow-lg hover:-translate-y-1">
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent to-gray-50/50 rounded-3xl"></div>
+    
+    <div class="relative z-10 flex-1">
+        <div class="w-10 h-10 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600 mb-4 group-hover:scale-110 transition-transform">
+            <GraduationCap size={20} />
+        </div>
+        <h3 class="text-lg font-bold mb-2">Research</h3>
+        <ul class="space-y-2 text-sm text-gray-500">
+            <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 bg-blue-400 rounded-full"></span>
+                Optical Computing
+            </li>
+            <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 bg-blue-400 rounded-full"></span>
+                Machine Learning
+            </li>
+             <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 bg-blue-400 rounded-full"></span>
+                Optimization
+            </li>
+        </ul>
+    </div>
+    
+    <div class="relative z-10 mt-4 flex items-center text-blue-600 text-sm font-medium">
+        View Publications <ArrowRight size={16} class="ml-1 group-hover:translate-x-1 transition-transform" />
+    </div>
+  </a>
+
+  <a href="/blog" class="md:col-span-1 md:row-span-1 rounded-3xl bg-indigo-50 border border-indigo-100 p-6 flex flex-col justify-between group hover:bg-indigo-100 transition-colors">
+      <div class="flex justify-between items-start">
+        <BookOpen size={24} class="text-indigo-600" />
+        <span class="text-xs font-bold bg-white px-2 py-1 rounded text-indigo-600">NEW</span>
+      </div>
+      <div>
+          <h3 class="font-bold text-gray-800 text-sm mb-1 line-clamp-2">Understanding Loss Functions in High-Dim Space</h3>
+          <p class="text-xs text-gray-500">Nov 20, 2025</p>
+      </div>
+  </a>
+
+  <div class="md:col-span-1 md:row-span-1 rounded-3xl bg-emerald-50 border border-emerald-100 p-6 flex flex-col justify-between">
+      <MapPin size={24} class="text-emerald-600" />
+      <div>
+          <h3 class="font-bold text-gray-800 text-lg">Beijing, CN</h3>
+          <div class="flex items-center gap-2 mt-1">
+              <span class="relative flex h-2 w-2">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+              </span>
+              <p class="text-xs text-emerald-700 font-medium">Writing Thesis</p>
+          </div>
+      </div>
+  </div>
+
+</div>
