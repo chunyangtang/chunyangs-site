@@ -7,13 +7,13 @@ import { Home, Search, AlertTriangle } from 'lucide-react';
   <div class="min-h-[70vh] flex flex-col items-center justify-center text-center px-4">
     
     <div class="relative">
-        <h1 class="text-9xl font-black text-gray-100 select-none">404</h1>
+        <h1 class="text-9xl font-black text-gray-100 dark:text-gray-900 select-none">404</h1>
         <div class="absolute inset-0 flex items-center justify-center text-blue-600/20 mix-blend-multiply animate-pulse">
             <AlertTriangle size={120} />
         </div>
     </div>
 
-    <h2 class="text-3xl font-bold text-gray-900 mt-4">Gradient Vanished</h2>
+    <h2 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mt-4">Gradient Vanished</h2>
     <p class="text-gray-600 max-w-md mt-3 text-lg leading-relaxed">
       The page you are looking for has converged to a local minimum that does not exist.
     </p>
@@ -21,7 +21,7 @@ import { Home, Search, AlertTriangle } from 'lucide-react';
     <div class="flex flex-col sm:flex-row gap-4 mt-8">
         <a 
             href="/" 
-            class="flex items-center gap-2 px-6 py-3 bg-gray-900 text-white rounded-xl hover:bg-gray-800 transition-all hover:-translate-y-1 shadow-lg shadow-gray-900/20"
+            class="flex items-center gap-2 px-6 py-3 bg-gray-900 dark:bg-white text-gray-100 dark:text-black rounded-xl hover:bg-gray-800 dark:hover:bg-gray-200 transition-all hover:-translate-y-1 shadow-lg shadow-gray-900/20 dark:shadow-white/10"
         >
             <Home size={18} />
             Return Home

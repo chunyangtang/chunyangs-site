@@ -1,0 +1,76 @@
+---
+import { Sun, Moon } from 'lucide-react';
+---
+
+<button
+  id="theme-toggle"
+  type="button"
+  class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700/50 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 transition-colors"
+  aria-label="Toggle Dark Mode"
+>
+  <Sun id="theme-toggle-light-icon" class="hidden w-5 h-5" />
+  <Moon id="theme-toggle-dark-icon" class="hidden w-5 h-5" />
+</button>
+
+<script>
+  function initThemeToggle() {
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const lightIcon = document.getElementById('theme-toggle-light-icon');
+    const darkIcon = document.getElementById('theme-toggle-dark-icon');
+
+    // Sync icons with current document state
+    const updateIcons = () => {
+        const isDark = document.documentElement.classList.contains('dark');
+        if (isDark) {
+            darkIcon?.classList.add('hidden');
+            lightIcon?.classList.remove('hidden');
+        } else {
+            lightIcon?.classList.add('hidden');
+            darkIcon?.classList.remove('hidden');
+        }
+    };
+
+    // Initial update
+    updateIcons();
+
+    // Remove old listener to avoid duplicates if any (though astro:page-load handles cleanup mostly)
+    const handleToggle = () => {
+        // Toggle class
+        document.documentElement.classList.toggle('dark');
+        
+        const isDark = document.documentElement.classList.contains('dark');
+        const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        // Smart Logic:
+        // If the new state matches the system preference, we clear storage (Adaptive Mode).
+        // If it differs, we save the preference (Override Mode).
+        if (isDark === systemDark) {
+            localStorage.removeItem('color-theme');
+            console.log('Mode matches system. Cleared storage (Adaptive).');
+        } else {
+            localStorage.setItem('color-theme', isDark ? 'dark' : 'light');
+            console.log(`Mode differs from system. Saved '${isDark ? 'dark' : 'light'}' (Override).`);
+        }
+
+        updateIcons();
+    };
+
+    // Ensure we don't bind multiple times
+    themeToggleBtn?.removeEventListener('click', handleToggle); // Clean up just in case
+    // Actually, creating a new function instance each time means removeEventListener won't work on the *previous* function.
+    // However, since the DOM element is likely replaced or we want a fresh listener, we can just use `onclick` or careful binding.
+    // Best practice with Astro View Transitions: The element might be new.
+    
+    if (themeToggleBtn) {
+        // Use onclick to prevent stacking listeners if the element persists
+        themeToggleBtn.onclick = handleToggle;
+    }
+  }
+
+  // Run on initial load
+  initThemeToggle();
+
+  // Run on view transition navigation
+  document.addEventListener('astro:page-load', initThemeToggle);
+  
+</script>

@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* Tailwind v4: make `dark:*` respond to the `.dark` class instead of system media query. */
+@custom-variant dark (&:where(.dark, .dark *));
+
 /* (v3 directives)
 @tailwind base;
 @tailwind components;

@@ -25,9 +25,33 @@ const { title = "Chunyang Tang" } = Astro.props;
 
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
+		<script is:inline>
+			const getResolvedTheme = () => {
+				const storedTheme = localStorage.getItem('color-theme');
+				if (storedTheme === 'dark' || storedTheme === 'light') {
+					return storedTheme;
+				}
+
+				return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+			};
+
+			const applyTheme = (doc = document) => {
+				doc.documentElement.classList.toggle('dark', getResolvedTheme() === 'dark');
+			};
+
+			// Initial paint
+			applyTheme();
+
+			// Keep theme in sync when Astro swaps in a new document during view transitions
+			document.addEventListener('astro:before-swap', (event) => {
+				if (event && event.newDocument) {
+					applyTheme(event.newDocument);
+				}
+			});
+		</script>
         <ClientRouter />
 	</head>
-	<body class="bg-gray-50 text-gray-900">
+	<body class="bg-gray-50 text-gray-900 dark:bg-gray-950 dark:text-gray-50 transition-colors duration-300">
         <Navbar />
         
         <main class="pt-20 max-w-4xl mx-auto px-4 min-h-screen">

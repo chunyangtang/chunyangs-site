@@ -10,19 +10,19 @@ import photoHobby from '../assets/profile.jpg';
     
     <div class="w-full mx-auto mb-6 flex items-end justify-between px-4">
         <div>
-            <h2 class="text-3xl md:text-5xl font-bold tracking-tight text-gray-900">
+            <h2 class="text-3xl md:text-5xl font-bold tracking-tight text-gray-900 dark:text-gray-100">
                 Beyond the Lab
             </h2>
-            <p class="text-lg text-gray-500 mt-2 max-w-xl">
+            <p class="text-lg text-gray-500 dark:text-gray-400 mt-2 max-w-xl">
                 A collection of my pursuits in the physical world. Swipe to explore.
             </p>
         </div>
         
         <div class="hidden md:flex gap-4">
-            <button id="scroll-left" class="p-5 rounded-full border border-gray-200 hover:bg-gray-100 transition-colors text-gray-600">
+            <button id="scroll-left" class="p-5 rounded-full border border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-gray-600 dark:text-gray-300">
                 <ArrowLeft size={28} />
             </button>
-            <button id="scroll-right" class="p-5 rounded-full bg-black text-white hover:bg-gray-800 transition-colors shadow-xl">
+            <button id="scroll-right" class="p-5 rounded-full bg-black dark:bg-white text-gray-100 dark:text-black hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors shadow-xl">
                 <ArrowRight size={28} />
             </button>
         </div>
@@ -33,29 +33,29 @@ import photoHobby from '../assets/profile.jpg';
         class="flex gap-4 overflow-x-auto snap-x snap-mandatory px-4 pb-8 no-scrollbar scroll-smooth items-center h-[500px]"
     >
 
-        <div class="relative flex-none w-full h-full snap-center rounded-3xl overflow-hidden bg-white border border-gray-100 shadow-xl shadow-gray-200/50 flex flex-col md:flex-row">
+        <div class="relative flex-none w-full h-full snap-center rounded-3xl overflow-hidden bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 shadow-xl shadow-gray-200/50 dark:shadow-black/50 flex flex-col md:flex-row">
             
-            <div class="md:w-1/3 p-8 md:p-10 flex flex-col justify-between z-10 bg-white">
+            <div class="md:w-1/3 p-8 md:p-10 flex flex-col justify-between z-10 bg-white dark:bg-gray-900">
                 <div>
-                    <div class="flex items-center gap-3 text-gray-400 mb-6">
+                    <div class="flex items-center gap-3 text-gray-400 dark:text-gray-500 mb-6">
                         <Camera size={24} />
                         <span class="font-mono text-sm uppercase tracking-widest">Visual Arts</span>
                     </div>
-                    <h3 class="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-4">
-                        Capturing<br/><span class="text-gray-400">Light</span>
+                    <h3 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-gray-100 leading-tight mb-4">
+                        Capturing<br/><span class="text-gray-400 dark:text-gray-600">Light</span>
                     </h3>
-                    <p class="text-base text-gray-600 leading-relaxed">
-                        Street photography and high-contrast landscapes. Exploring the texture of the world through a <strong class="text-gray-900">Sony A7</strong> lens.
+                    <p class="text-base text-gray-600 dark:text-gray-400 leading-relaxed">
+                        Street photography and high-contrast landscapes. Exploring the texture of the world through a <strong class="text-gray-900 dark:text-gray-100">Sony A7</strong> lens.
                     </p>
                 </div>
                 
                 <div class="flex items-center gap-4 mt-8">
-                    <div class="px-4 py-2 bg-gray-100 rounded-full text-sm font-bold text-gray-600">35mm</div>
-                    <div class="px-4 py-2 bg-gray-100 rounded-full text-sm font-bold text-gray-600">B&W</div>
+                    <div class="px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-full text-sm font-bold text-gray-600 dark:text-gray-300">35mm</div>
+                    <div class="px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-full text-sm font-bold text-gray-600 dark:text-gray-300">B&W</div>
                 </div>
             </div>
 
-            <div class="md:w-2/3 relative h-full bg-gray-100">
+            <div class="md:w-2/3 relative h-full bg-gray-100 dark:bg-gray-800">
                 <Image 
                     src={photoHobby} 
                     alt="Photography" 
@@ -67,7 +67,7 @@ import photoHobby from '../assets/profile.jpg';
         </div>
 
 
-        <div class="relative flex-none w-full h-full snap-center rounded-3xl overflow-hidden bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-100 shadow-xl shadow-blue-900/10 flex flex-col md:flex-row">
+        <div class="relative flex-none w-full h-full snap-center rounded-3xl overflow-hidden bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 border border-blue-100 dark:border-blue-900/30 shadow-xl shadow-blue-900/10 flex flex-col md:flex-row">
              
             <div class="md:w-1/2 relative h-1/2 md:h-full overflow-hidden">
                 <Image 
@@ -77,43 +77,43 @@ import photoHobby from '../assets/profile.jpg';
                     width={800}
                     height={1000}
                 />
-                <div class="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-transparent mix-blend-multiply"></div>
+                <div class="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-transparent mix-blend-multiply dark:mix-blend-normal dark:from-blue-900/50"></div>
                 
-                <div class="absolute bottom-10 left-10 text-blue-900">
+                <div class="absolute bottom-10 left-10 text-blue-900 dark:text-blue-200">
                     <h3 class="text-5xl md:text-7xl font-black tracking-tighter uppercase opacity-10">Active</h3>
                 </div>
             </div>
 
             <div class="md:w-1/2 p-8 md:p-10 flex flex-col justify-center">
-                <div class="flex items-center gap-3 text-blue-600 mb-6">
+                <div class="flex items-center gap-3 text-blue-600 dark:text-blue-400 mb-6">
                     <Activity size={24} />
                     <span class="font-mono text-sm uppercase tracking-widest">Physical Engineering</span>
                 </div>
                 
-                <h3 class="text-3xl md:text-5xl font-bold text-blue-900 mb-6">
+                <h3 class="text-3xl md:text-5xl font-bold text-blue-900 dark:text-blue-100 mb-6">
                     Body & Mind
                 </h3>
 
                 <div class="grid grid-cols-2 gap-4">
-                    <div class="bg-white p-6 rounded-3xl shadow-sm border border-blue-100 hover:scale-105 transition-transform">
-                        <Wind class="text-blue-500 mb-3" />
-                        <div class="text-3xl font-bold text-gray-900">10k</div>
-                        <div class="text-xs text-gray-500 font-bold uppercase">Running</div>
+                    <div class="bg-white dark:bg-blue-950/30 p-6 rounded-3xl shadow-sm border border-blue-100 dark:border-blue-900/30 hover:scale-105 transition-transform">
+                        <Wind class="text-blue-500 dark:text-blue-400 mb-3" />
+                        <div class="text-3xl font-bold text-gray-900 dark:text-gray-100">10k</div>
+                        <div class="text-xs text-gray-500 dark:text-gray-400 font-bold uppercase">Running</div>
                     </div>
-                    <div class="bg-white p-6 rounded-3xl shadow-sm border border-blue-100 hover:scale-105 transition-transform">
-                        <Dumbbell class="text-purple-500 mb-3" />
-                        <div class="text-3xl font-bold text-gray-900">Daily</div>
-                        <div class="text-xs text-gray-500 font-bold uppercase">Strength</div>
+                    <div class="bg-white dark:bg-blue-950/30 p-6 rounded-3xl shadow-sm border border-blue-100 dark:border-blue-900/30 hover:scale-105 transition-transform">
+                        <Dumbbell class="text-purple-500 dark:text-purple-400 mb-3" />
+                        <div class="text-3xl font-bold text-gray-900 dark:text-gray-100">Daily</div>
+                        <div class="text-xs text-gray-500 dark:text-gray-400 font-bold uppercase">Strength</div>
                     </div>
-                    <div class="bg-white p-6 rounded-3xl shadow-sm border border-blue-100 hover:scale-105 transition-transform">
+                    <div class="bg-white dark:bg-blue-950/30 p-6 rounded-3xl shadow-sm border border-blue-100 dark:border-blue-900/30 hover:scale-105 transition-transform">
                         <div class="w-6 h-6 rounded-full border-2 border-orange-500 mb-3"></div>
-                        <div class="text-3xl font-bold text-gray-900">Wkly</div>
-                        <div class="text-xs text-gray-500 font-bold uppercase">Badminton</div>
+                        <div class="text-3xl font-bold text-gray-900 dark:text-gray-100">Wkly</div>
+                        <div class="text-xs text-gray-500 dark:text-gray-400 font-bold uppercase">Badminton</div>
                     </div>
-                    <div class="bg-white p-6 rounded-3xl shadow-sm border border-blue-100 hover:scale-105 transition-transform">
+                    <div class="bg-white dark:bg-blue-950/30 p-6 rounded-3xl shadow-sm border border-blue-100 dark:border-blue-900/30 hover:scale-105 transition-transform">
                         <div class="text-2xl font-bold text-blue-400 mb-3">~</div>
-                        <div class="text-3xl font-bold text-gray-900">1.5km</div>
-                        <div class="text-xs text-gray-500 font-bold uppercase">Swim</div>
+                        <div class="text-3xl font-bold text-gray-900 dark:text-gray-100">1.5km</div>
+                        <div class="text-xs text-gray-500 dark:text-gray-400 font-bold uppercase">Swim</div>
                     </div>
                 </div>
             </div>
@@ -143,7 +143,7 @@ import photoHobby from '../assets/profile.jpg';
                     <div class="absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent opacity-20 pointer-events-none"></div>
                 </div>
 
-                <div class="w-full md:w-1/2 text-white">
+                <div class="w-full md:w-1/2 text-gray-100">
                      <div class="flex items-center gap-3 text-pink-400 mb-6">
                         <Disc size={24} class="animate-spin-slow" />
                         <span class="font-mono text-sm uppercase tracking-widest">Now Playing</span>
@@ -152,14 +152,14 @@ import photoHobby from '../assets/profile.jpg';
                     <h3 class="text-4xl md:text-6xl font-bold tracking-tighter mb-2">
                         Soundscapes
                     </h3>
-                    <p class="text-lg text-white/60 font-light mb-6">
+                    <p class="text-lg text-gray-300 font-light mb-6">
                         Taylor Swift • Pop • Lo-Fi
                     </p>
 
                     <div class="w-full h-1 bg-white/20 rounded-full mb-4 overflow-hidden">
                         <div class="w-1/3 h-full bg-pink-500 rounded-full"></div>
                     </div>
-                    <div class="flex justify-between text-xs font-mono text-white/40">
+                    <div class="flex justify-between text-xs font-mono text-gray-400">
                         <span>1:24</span>
                         <span>3:45</span>
                     </div>
@@ -184,13 +184,13 @@ import photoHobby from '../assets/profile.jpg';
                     <Globe size={20} />
                     <span class="font-mono text-xs uppercase tracking-widest">Exploration</span>
                 </div>
-                <h3 class="text-4xl md:text-6xl font-bold text-white mb-4">
+                <h3 class="text-4xl md:text-6xl font-bold text-gray-100 mb-4">
                     The Unknown
                 </h3>
                  <div class="flex flex-wrap gap-3">
-                    <span class="px-4 py-2 text-sm rounded-full border border-white/30 text-white backdrop-blur-md bg-white/10">National Parks</span>
-                    <span class="px-4 py-2 text-sm rounded-full border border-white/30 text-white backdrop-blur-md bg-white/10">City Scales</span>
-                    <span class="px-4 py-2 text-sm rounded-full border border-white/30 text-white backdrop-blur-md bg-white/10">Hiking</span>
+                    <span class="px-4 py-2 text-sm rounded-full border border-white/30 text-gray-100 backdrop-blur-md bg-white/10">National Parks</span>
+                    <span class="px-4 py-2 text-sm rounded-full border border-white/30 text-gray-100 backdrop-blur-md bg-white/10">City Scales</span>
+                    <span class="px-4 py-2 text-sm rounded-full border border-white/30 text-gray-100 backdrop-blur-md bg-white/10">Hiking</span>
                 </div>
             </div>
         </div>
@@ -229,21 +229,34 @@ import photoHobby from '../assets/profile.jpg';
 </section>
 
 <script>
-    const scrollContainer = document.getElementById('hobby-scroll');
-    const leftBtn = document.getElementById('scroll-left');
-    const rightBtn = document.getElementById('scroll-right');
+    const initHobbyScroll = () => {
+        const scrollContainer = document.getElementById('hobby-scroll');
+        const leftBtn = document.getElementById('scroll-left');
+        const rightBtn = document.getElementById('scroll-right');
 
-    if (scrollContainer && leftBtn && rightBtn) {
-        rightBtn.addEventListener('click', () => {
-            const cardWidth = scrollContainer.querySelector('div')?.clientWidth || 500;
-            scrollContainer.scrollBy({ left: cardWidth + 16, behavior: 'smooth' });
-        });
+        if (!(scrollContainer && leftBtn && rightBtn)) {
+            return;
+        }
 
-        leftBtn.addEventListener('click', () => {
-            const cardWidth = scrollContainer.querySelector('div')?.clientWidth || 500;
-            scrollContainer.scrollBy({ left: -(cardWidth + 16), behavior: 'smooth' });
-        });
-    }
+        const getStep = () => {
+            const firstCard = scrollContainer.firstElementChild;
+            const cardWidth = firstCard instanceof HTMLElement ? firstCard.clientWidth : 500;
+            return cardWidth + 16;
+        };
+
+        // Use onclick so re-initializing after route transitions doesn't stack listeners.
+        rightBtn.onclick = () => {
+            scrollContainer.scrollBy({ left: getStep(), behavior: 'smooth' });
+        };
+
+        leftBtn.onclick = () => {
+            scrollContainer.scrollBy({ left: -getStep(), behavior: 'smooth' });
+        };
+    };
+
+    // Initial load and client-side navigation (Astro view transitions)
+    initHobbyScroll();
+    document.addEventListener('astro:page-load', initHobbyScroll);
 </script>
 
 <style>

@@ -29,8 +29,8 @@ import { education, publications, myName } from '../../data/cv';
           </div>
 
           <div>
-            <h1 class="text-2xl font-bold tracking-tight text-gray-900">Chunyang Tang</h1>
-            <p class="text-lg text-gray-600 mt-1">PhD Candidate</p>
+            <h1 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-gray-100">Chunyang Tang</h1>
+            <p class="text-lg text-gray-600 dark:text-gray-400 mt-1">PhD Candidate</p>
             <p class="text-sm text-gray-500 mt-1">Tsinghua University</p>
             
             <div class="flex gap-4 mt-6">
@@ -43,7 +43,7 @@ import { education, publications, myName } from '../../data/cv';
                 <a href="https://www.linkedin.com/in/chunyang-tang-12a34634a/" class="text-gray-400 hover:text-blue-600 transition-colors">
                     <Linkedin size={22} />
                 </a>
-                 <a href="#" class="text-gray-400 hover:text-blue-600 transition-colors" title="Google Scholar">
+                 <a href="#" class="text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors" title="Google Scholar">
                     <GraduationCap size={22} />
                 </a>
             </div>
@@ -51,7 +51,7 @@ import { education, publications, myName } from '../../data/cv';
 
           <a 
             href="#" 
-            class="flex items-center justify-center w-full gap-2 px-4 py-3 bg-gray-900 text-white rounded-xl hover:bg-gray-800 transition-all hover:shadow-lg hover:-translate-y-0.5"
+            class="flex items-center justify-center w-full gap-2 px-4 py-3 bg-gray-900 dark:bg-white text-gray-100 dark:text-black rounded-xl hover:bg-gray-800 dark:hover:bg-gray-200 transition-all hover:shadow-lg hover:-translate-y-0.5"
           >
             <Download size={18} />
             <span class="font-medium"><del>Download CV</del></span>
@@ -64,23 +64,23 @@ import { education, publications, myName } from '../../data/cv';
 <main class="md:col-span-8 lg:col-span-8 space-y-12">
         
         <section class="max-w-none prose prose-slate prose-lg">
-          <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6 flex items-center gap-3">
              About Me
           </h2>
-          <p class="text-gray-600 leading-relaxed">
+          <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
             I am a PhD student at <a href="https://www.tsinghua.edu.cn/en/" class="text-blue-600 font-medium hover:underline decoration-blue-200 decoration-2 underline-offset-2">Tsinghua University</a>, advised by [Professor Name]. 
-            My research lies at the intersection of <strong class="text-gray-900 font-semibold">Optical Computing</strong> and <strong class="text-gray-900 font-semibold">Machine Learning</strong>.
+            My research lies at the intersection of <strong class="text-gray-900 dark:text-gray-100 font-semibold">Optical Computing</strong> and <strong class="text-gray-900 dark:text-gray-100 font-semibold">Machine Learning</strong>.
           </p>
-          <p class="text-gray-600 leading-relaxed mt-4">
+          <p class="text-gray-600 dark:text-gray-300 leading-relaxed mt-4">
             Currently, I am exploring how to implement robust loss functions on analog optical chips to accelerate training efficiency. 
             Before this, I worked on nanophotonics and gradient-free optimization methods.
           </p>
         </section>
 
-        <hr class="border-gray-100" />
+        <hr class="border-gray-100 dark:border-gray-800" />
 
 <section>
-             <h2 class="text-2xl font-bold text-gray-900 mb-8 flex items-center gap-3">
+             <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-8 flex items-center gap-3">
                 Education
             </h2>
             <div class="space-y-8">
@@ -90,8 +90,8 @@ import { education, publications, myName } from '../../data/cv';
                             {edu.year}
                         </div>
                         <div>
-                            <h3 class="text-lg font-bold text-gray-900 group-hover:text-blue-600 transition-colors">{edu.school}</h3>
-                            <div class="text-gray-700 font-medium mt-1">{edu.degree}</div>
+                            <h3 class="text-lg font-bold text-gray-900 dark:text-gray-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">{edu.school}</h3>
+                            <div class="text-gray-700 dark:text-gray-300 font-medium mt-1">{edu.degree}</div>
                             
                             <div class="text-sm mt-0.5">
                                 {edu.departmentUrl ? (
@@ -109,7 +109,7 @@ import { education, publications, myName } from '../../data/cv';
                                 )}
                             </div>
                             
-                            <p class="text-gray-600 text-sm leading-relaxed mt-2 text-justify">
+                            <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mt-2 text-justify">
                                 {edu.details}
                             </p>
                         </div>
@@ -118,18 +118,18 @@ import { education, publications, myName } from '../../data/cv';
             </div>
         </section>
 
-        <hr class="border-gray-100" />
+        <hr class="border-gray-100 dark:border-gray-800" />
 
         <section>
-            <h2 class="text-2xl font-bold text-gray-900 mb-8 flex items-center gap-3">
+            <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-8 flex items-center gap-3">
                 Publications
             </h2>
             
             <div class="space-y-8">
                 {publications.map((pub) => (
-                    <div class="group flex flex-col sm:flex-row gap-6 hover:bg-gray-50/50 p-4 -mx-4 rounded-xl transition-colors border border-transparent hover:border-gray-100">
+                    <div class="group flex flex-col sm:flex-row gap-6 hover:bg-gray-50/50 dark:hover:bg-gray-900/50 p-4 -mx-4 rounded-xl transition-colors border border-transparent hover:border-gray-100 dark:hover:border-gray-800">
                         
-                        <div class="sm:w-32 sm:shrink-0 relative rounded-lg overflow-hidden border border-gray-100 shadow-sm">
+                        <div class="sm:w-32 sm:shrink-0 relative rounded-lg overflow-hidden border border-gray-100 dark:border-gray-800 shadow-sm">
                              <Image 
                                 src={pub.image} 
                                 alt={pub.title} 
@@ -139,8 +139,8 @@ import { education, publications, myName } from '../../data/cv';
                              />
                         </div>
 
-                        <div class="flex-1 min-w-0"> <h3 class="text-lg font-bold text-gray-900 leading-tight mb-2 group-hover:text-blue-600 transition-colors">
-                                <a href={pub.links.pdf} class="hover:underline decoration-blue-200 decoration-2 underline-offset-2">
+                        <div class="flex-1 min-w-0"> <h3 class="text-lg font-bold text-gray-900 dark:text-gray-100 leading-tight mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                                <a href={pub.links.pdf} class="hover:underline decoration-blue-200 dark:decoration-blue-800 decoration-2 underline-offset-2">
                                     {pub.title}
                                 </a>
                             </h3>
@@ -150,7 +150,7 @@ import { education, publications, myName } from '../../data/cv';
                                     <>
                                         {part}
                                         {index < array.length - 1 ? (
-                                            <strong class="text-gray-900 font-bold">{myName}</strong>
+                                            <strong class="text-gray-900 dark:text-gray-100 font-bold">{myName}</strong>
                                         ) : null}
                                     </>
                                 ))}
@@ -158,25 +158,25 @@ import { education, publications, myName } from '../../data/cv';
                             
                             <div class="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm mt-auto">
                                 <span class={`px-2.5 py-0.5 rounded-md text-xs font-bold tracking-wide uppercase border ${
-                                    pub.type === 'Conference' ? 'bg-blue-50 text-blue-700 border-blue-100' : 
-                                    'bg-purple-50 text-purple-700 border-purple-100'
+                                    pub.type === 'Conference' ? 'bg-blue-50 dark:bg-blue-950/30 text-blue-700 dark:text-blue-300 border-blue-100 dark:border-blue-900/30' : 
+                                    'bg-purple-50 dark:bg-purple-950/30 text-purple-700 dark:text-purple-300 border-purple-100 dark:border-purple-900/30'
                                 }`}>
                                     {pub.venue}
                                 </span>
 
                                 <div class="flex gap-3 text-gray-500 font-medium">
                                     {pub.links.pdf && (
-                                        <a href={pub.links.pdf} class="hover:text-gray-900 hover:underline flex items-center gap-1 transition-colors">
+                                        <a href={pub.links.pdf} class="hover:text-gray-900 dark:hover:text-gray-100 hover:underline flex items-center gap-1 transition-colors">
                                             PDF
                                         </a>
                                     )}
                                     {pub.links.code && (
-                                        <a href={pub.links.code} class="hover:text-gray-900 hover:underline flex items-center gap-1 transition-colors">
+                                        <a href={pub.links.code} class="hover:text-gray-900 dark:hover:text-gray-100 hover:underline flex items-center gap-1 transition-colors">
                                             Code
                                         </a>
                                     )}
                                     {pub.links.website && (
-                                        <a href={pub.links.website} class="hover:text-gray-900 hover:underline flex items-center gap-1 transition-colors">
+                                        <a href={pub.links.website} class="hover:text-gray-900 dark:hover:text-gray-100 hover:underline flex items-center gap-1 transition-colors">
                                             Website
                                         </a>
                                     )}
