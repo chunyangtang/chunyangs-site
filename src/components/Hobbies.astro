@@ -1,8 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-import { Camera, Dumbbell, Music, MapPin, BookOpen, ArrowRight, ArrowLeft, Disc, Wind, Activity, Globe } from 'lucide-react';
-
-// --- PLACEHOLDERS (Replace with specific images for each hobby!) ---
+import { Camera, Dumbbell, BookOpen, ArrowRight, ArrowLeft, Disc, Wind, Activity, Globe } from 'lucide-react';
 import photoHobby from '../assets/profile.jpg'; 
 ---
 
@@ -19,10 +17,10 @@ import photoHobby from '../assets/profile.jpg';
         </div>
         
         <div class="hidden md:flex gap-4">
-            <button id="scroll-left" class="p-5 rounded-full border border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-gray-600 dark:text-gray-300">
+            <button id="scroll-left" aria-label="Scroll hobbies left" class="p-5 rounded-full border border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-gray-600 dark:text-gray-300">
                 <ArrowLeft size={28} />
             </button>
-            <button id="scroll-right" class="p-5 rounded-full bg-black dark:bg-white text-gray-100 dark:text-black hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors shadow-xl">
+            <button id="scroll-right" aria-label="Scroll hobbies right" class="p-5 rounded-full bg-black dark:bg-white text-gray-100 dark:text-black hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors shadow-xl">
                 <ArrowRight size={28} />
             </button>
         </div>
@@ -168,7 +166,7 @@ import photoHobby from '../assets/profile.jpg';
         </div>
 
 
-        <div class="relative flex-none w-full h-full snap-center rounded-3xl overflow-hidden bg-stone-900 shadow-xl">
+        <div class="group relative flex-none w-full h-full snap-center rounded-3xl overflow-hidden bg-stone-900 shadow-xl">
             <Image 
                 src={photoHobby} 
                 alt="Travel" 
@@ -222,8 +220,6 @@ import photoHobby from '../assets/profile.jpg';
 
         </div>
 
-        <!-- Removed spacer since we want internal scrolling or full width adjustment, keeping it minimal -->
-
     </div>
 
 </section>
@@ -256,7 +252,10 @@ import photoHobby from '../assets/profile.jpg';
 
     // Initial load and client-side navigation (Astro view transitions)
     initHobbyScroll();
-    document.addEventListener('astro:page-load', initHobbyScroll);
+    if (!window.__hobbyScrollInitBound) {
+        document.addEventListener('astro:page-load', initHobbyScroll);
+        window.__hobbyScrollInitBound = true;
+    }
 </script>
 
 <style>

@@ -1,46 +1,46 @@
-# Astro Starter Kit: Basics
+# Chunyang's Site
 
-```sh
-npm create astro@latest -- --template basics
+Personal academic website built with Astro + Tailwind CSS (v4), with dark mode, blog content collections, and image optimization.
+
+## Stack
+
+- Astro 5
+- Tailwind CSS 4 via `@tailwindcss/vite`
+- Astro Content Collections (`src/content/`)
+- Markdown + KaTeX (remark/rehype plugins)
+
+## Quick Start
+
+```bash
+npm install
+npm run dev
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+App runs locally at `http://localhost:4321`.
 
-## 🚀 Project Structure
+## Commands
 
-Inside of your Astro project, you'll see the following folders and files:
+- `npm run dev`: start dev server
+- `npm run build`: production build to `dist/`
+- `npm run preview`: preview production build
+- `npm run astro`: run Astro CLI
+
+## Project Layout
 
 ```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+src/
+  components/   UI sections (Navbar, BentoGrid, Hobbies, ThemeToggle)
+  layouts/      Shared page shell + global scripts
+  pages/        Route files
+  content/      Blog markdown content + collection schema
+  styles/       Global Tailwind/CSS customizations
+data/
+  cv.ts         Education/publication data
+  site.ts       Shared profile/contact links
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## Content Notes
 
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- Blog posts are under `src/content/blog/*.md`.
+- Site-wide profile/contact values are centralized in `data/site.ts`.
+- CV and publication data live in `data/cv.ts`.

@@ -16,7 +16,15 @@ const { Content } = await post.render();
 ---
 
 <Layout title={post.data.title}>
-	<article class="max-w-3xl mx-auto py-10">
+    <link
+        slot="head"
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+        integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+        crossorigin="anonymous"
+    />
+
+	<article class="max-w-3xl mx-auto px-4 py-10">
         <div class="mb-8 text-center">
             <span class="text-sm text-gray-500 dark:text-gray-400 font-mono">
                 {post.data.pubDate.toLocaleDateString()}
@@ -33,15 +41,8 @@ const { Content } = await post.render();
         
         <hr class="border-gray-200 dark:border-gray-800 mb-8" />
 
-		<div class="prose prose-lg prose-blue dark:prose-invert mx-auto prose-headings:font-bold prose-a:text-blue-600 dark:prose-a:text-blue-400 hover:prose-a:text-blue-500 dark:hover:prose-a:text-blue-300">
+		<div class="prose prose-lg prose-blue dark:prose-invert mx-auto prose-headings:font-bold prose-pre:rounded-xl prose-pre:border prose-pre:border-gray-200 dark:prose-pre:border-gray-700 prose-a:text-blue-600 dark:prose-a:text-blue-400 hover:prose-a:text-blue-500 dark:hover:prose-a:text-blue-300">
 			<Content />
 		</div>
 	</article>
-    
-    <link
-        rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
-        integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
-        crossorigin="anonymous"
-    />
 </Layout>

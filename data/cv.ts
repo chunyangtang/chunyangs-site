@@ -17,9 +17,18 @@ interface Publication {
   };
 }
 
+interface Education {
+  degree: string;
+  school: string;
+  department: string;
+  departmentUrl?: string;
+  year: string;
+  details: string;
+}
+
 export const myName = "Chunyang Tang";
 
-export const education = [
+export const education: Education[] = [
   {
     degree: "Ph.D. in Control Science and Engineering",
     school: "Tsinghua University",
@@ -38,16 +47,14 @@ export const education = [
   }
 ];
 
-export const publications = [
+export const publications: Publication[] = [
   {
     title: "Diffractive Optical Neural Networks for High-Speed Inference",
-    // Note: I put your full name here to test the highlighting
     authors: "Chunyang Tang, A. Professor, B. Colleague",
     venue: "NeurIPS 2025",
     type: "Conference",
-    image: paperNNT, // Add your paper teaser image here
-    links: { pdf: "#", code: "#" }
+    image: paperNNT,
+    links: {}
   },
 
 ];
-

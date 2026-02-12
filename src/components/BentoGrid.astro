@@ -1,13 +1,6 @@
 ---
 import { ArrowRight, BookOpen, GraduationCap, Github, Mail, Linkedin, MapPin } from 'lucide-react';
-
-// This is where you can easily update your data later
-const profile = {
-  name: "Chunyang Tang",
-  role: "PhD Researcher",
-  uni: "University", // Replace with your actual university
-  bio: "Exploring the intersection of Optical Computing and Machine Learning. Building robust AI systems with light and logic.",
-};
+import { siteProfile } from '../../data/site';
 ---
 
 <div class="grid grid-cols-1 md:grid-cols-4 gap-4 auto-rows-[180px]">
@@ -21,22 +14,25 @@ const profile = {
            Open for Collaboration
          </span>
       </div>
-      <h1 class="text-4xl font-bold tracking-tight mb-2">{profile.name}</h1>
-      <p class="text-xl text-gray-300 font-light mb-6">{profile.role}</p>
+      <h1 class="text-4xl font-bold tracking-tight mb-2">{siteProfile.name}</h1>
+      <p class="text-xl text-gray-300 font-light mb-6">{siteProfile.role}</p>
       <p class="text-gray-400 text-sm leading-relaxed max-w-sm">
-        {profile.bio}
+        {siteProfile.bio}
       </p>
     </div>
 
     <div class="z-10 flex gap-4 mt-auto">
-        <a href="mailto:your.email@edu.com" class="p-2 bg-white/10 rounded-full hover:bg-white/20 transition-colors">
+        <a href={`mailto:${siteProfile.email}`} aria-label="Send email" class="p-2 bg-white/10 rounded-full hover:bg-white/20 transition-colors">
             <Mail size={20} />
         </a>
-        <a href="https://github.com" target="_blank" class="p-2 bg-white/10 rounded-full hover:bg-white/20 transition-colors">
+        <a href={siteProfile.githubUrl} target="_blank" rel="noopener noreferrer" aria-label="GitHub profile" class="p-2 bg-white/10 rounded-full hover:bg-white/20 transition-colors">
             <Github size={20} />
         </a>
-         <a href="https://linkedin.com" target="_blank" class="p-2 bg-white/10 rounded-full hover:bg-white/20 transition-colors">
+         <a href={siteProfile.linkedinUrl} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile" class="p-2 bg-white/10 rounded-full hover:bg-white/20 transition-colors">
             <Linkedin size={20} />
+        </a>
+        <a href={siteProfile.googleScholarUrl} target="_blank" rel="noopener noreferrer" aria-label="Google Scholar profile" class="p-2 bg-white/10 rounded-full hover:bg-white/20 transition-colors">
+            <GraduationCap size={20} />
         </a>
     </div>
   </div>

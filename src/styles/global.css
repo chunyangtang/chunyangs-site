@@ -3,8 +3,29 @@
 /* Tailwind v4: make `dark:*` respond to the `.dark` class instead of system media query. */
 @custom-variant dark (&:where(.dark, .dark *));
 
-/* (v3 directives)
-@tailwind base;
-@tailwind components;
-@tailwind utilities;  
-*/
+:root {
+  color-scheme: light;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: rgb(59 130 246 / 0.25);
+}
+
+:focus-visible {
+  outline: 2px solid rgb(59 130 246 / 0.9);
+  outline-offset: 2px;
+}

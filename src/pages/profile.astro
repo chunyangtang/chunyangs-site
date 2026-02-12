@@ -1,10 +1,14 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { Image } from 'astro:assets';
-import { Download, Mail, Github, Linkedin, ExternalLink, GraduationCap, Award } from 'lucide-react';
+import { Download, Mail, Github, Linkedin, ExternalLink, GraduationCap } from 'lucide-react';
 import profileImage from '../assets/profile.jpg';
 
 import { education, publications, myName } from '../../data/cv';
+import { siteProfile } from '../../data/site';
+
+const isExternalUrl = (value: string | null | undefined) =>
+  typeof value === 'string' && /^https?:\/\//.test(value);
 ---
 
 <Layout title="Profile | Chunyang">
@@ -29,46 +33,54 @@ import { education, publications, myName } from '../../data/cv';
           </div>
 
           <div>
-            <h1 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-gray-100">Chunyang Tang</h1>
-            <p class="text-lg text-gray-600 dark:text-gray-400 mt-1">PhD Candidate</p>
-            <p class="text-sm text-gray-500 mt-1">Tsinghua University</p>
+            <h1 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-gray-100">{siteProfile.name}</h1>
+            <p class="text-lg text-gray-600 dark:text-gray-400 mt-1">{siteProfile.role}</p>
+            <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">{siteProfile.affiliation}</p>
             
             <div class="flex gap-4 mt-6">
-                <a href="mailto:tangcy21@mails.tsinghua.edu.cn" class="text-gray-400 hover:text-gray-900 transition-colors">
+                <a href={`mailto:${siteProfile.email}`} aria-label="Send email" class="text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors">
                     <Mail size={22} />
                 </a>
-                <a href="https://github.com/chunyangtang" class="text-gray-400 hover:text-gray-900 transition-colors">
+                <a href={siteProfile.githubUrl} target="_blank" rel="noopener noreferrer" aria-label="GitHub profile" class="text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors">
                     <Github size={22} />
                 </a>
-                <a href="https://www.linkedin.com/in/chunyang-tang-12a34634a/" class="text-gray-400 hover:text-blue-600 transition-colors">
+                <a href={siteProfile.linkedinUrl} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile" class="text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
                     <Linkedin size={22} />
                 </a>
-                 <a href="#" class="text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors" title="Google Scholar">
-                    <GraduationCap size={22} />
-                </a>
+                {isExternalUrl(siteProfile.googleScholarUrl) ? (
+                    <a href={siteProfile.googleScholarUrl} target="_blank" rel="noopener noreferrer" aria-label="Google Scholar profile" class="text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                        <GraduationCap size={22} />
+                    </a>
+                ) : (
+                    <span class="text-gray-400 opacity-60 cursor-not-allowed" title="Google Scholar (coming soon)" aria-disabled="true">
+                        <GraduationCap size={22} />
+                    </span>
+                )}
             </div>
           </div>
 
-          <a 
-            href="#" 
-            class="flex items-center justify-center w-full gap-2 px-4 py-3 bg-gray-900 dark:bg-white text-gray-100 dark:text-black rounded-xl hover:bg-gray-800 dark:hover:bg-gray-200 transition-all hover:shadow-lg hover:-translate-y-0.5"
+          <button
+            type="button"
+            disabled
+            title="CV download will be available soon."
+            class="flex items-center justify-center w-full gap-2 px-4 py-3 bg-gray-900/80 dark:bg-gray-100/90 text-gray-100 dark:text-black rounded-xl opacity-75 cursor-not-allowed"
           >
             <Download size={18} />
-            <span class="font-medium"><del>Download CV</del></span>
-          </a>
+            <span class="font-medium">Download CV (Soon)</span>
+          </button>
 
         </div>
       </aside>
 
 
-<main class="md:col-span-8 lg:col-span-8 space-y-12">
+<div class="md:col-span-8 lg:col-span-8 space-y-12">
         
         <section class="max-w-none prose prose-slate prose-lg">
           <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6 flex items-center gap-3">
              About Me
           </h2>
           <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
-            I am a PhD student at <a href="https://www.tsinghua.edu.cn/en/" class="text-blue-600 font-medium hover:underline decoration-blue-200 decoration-2 underline-offset-2">Tsinghua University</a>, advised by [Professor Name]. 
+            I am a PhD student at <a href="https://www.tsinghua.edu.cn/en/" target="_blank" rel="noopener noreferrer" class="text-blue-600 font-medium hover:underline decoration-blue-200 decoration-2 underline-offset-2">Tsinghua University</a> in the College of AI. 
             My research lies at the intersection of <strong class="text-gray-900 dark:text-gray-100 font-semibold">Optical Computing</strong> and <strong class="text-gray-900 dark:text-gray-100 font-semibold">Machine Learning</strong>.
           </p>
           <p class="text-gray-600 dark:text-gray-300 leading-relaxed mt-4">
@@ -140,12 +152,16 @@ import { education, publications, myName } from '../../data/cv';
                         </div>
 
                         <div class="flex-1 min-w-0"> <h3 class="text-lg font-bold text-gray-900 dark:text-gray-100 leading-tight mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                                <a href={pub.links.pdf} class="hover:underline decoration-blue-200 dark:decoration-blue-800 decoration-2 underline-offset-2">
-                                    {pub.title}
-                                </a>
+                                {isExternalUrl(pub.links.pdf) ? (
+                                    <a href={pub.links.pdf} target="_blank" rel="noopener noreferrer" class="hover:underline decoration-blue-200 dark:decoration-blue-800 decoration-2 underline-offset-2">
+                                        {pub.title}
+                                    </a>
+                                ) : (
+                                    <span>{pub.title}</span>
+                                )}
                             </h3>
                             
-                            <p class="text-gray-600 text-sm mb-3 leading-relaxed">
+                            <p class="text-gray-600 dark:text-gray-400 text-sm mb-3 leading-relaxed">
                                 {pub.authors.split(myName).map((part, index, array) => (
                                     <>
                                         {part}
@@ -165,18 +181,18 @@ import { education, publications, myName } from '../../data/cv';
                                 </span>
 
                                 <div class="flex gap-3 text-gray-500 font-medium">
-                                    {pub.links.pdf && (
-                                        <a href={pub.links.pdf} class="hover:text-gray-900 dark:hover:text-gray-100 hover:underline flex items-center gap-1 transition-colors">
+                                    {isExternalUrl(pub.links.pdf) && (
+                                        <a href={pub.links.pdf} target="_blank" rel="noopener noreferrer" class="hover:text-gray-900 dark:hover:text-gray-100 hover:underline flex items-center gap-1 transition-colors">
                                             PDF
                                         </a>
                                     )}
-                                    {pub.links.code && (
-                                        <a href={pub.links.code} class="hover:text-gray-900 dark:hover:text-gray-100 hover:underline flex items-center gap-1 transition-colors">
+                                    {isExternalUrl(pub.links.code) && (
+                                        <a href={pub.links.code} target="_blank" rel="noopener noreferrer" class="hover:text-gray-900 dark:hover:text-gray-100 hover:underline flex items-center gap-1 transition-colors">
                                             Code
                                         </a>
                                     )}
-                                    {pub.links.website && (
-                                        <a href={pub.links.website} class="hover:text-gray-900 dark:hover:text-gray-100 hover:underline flex items-center gap-1 transition-colors">
+                                    {isExternalUrl(pub.links.website) && (
+                                        <a href={pub.links.website} target="_blank" rel="noopener noreferrer" class="hover:text-gray-900 dark:hover:text-gray-100 hover:underline flex items-center gap-1 transition-colors">
                                             Website
                                         </a>
                                     )}
@@ -188,7 +204,7 @@ import { education, publications, myName } from '../../data/cv';
             </div>
         </section>
 
-      </main>
+      </div>
     </div>
   </div>
 </Layout>

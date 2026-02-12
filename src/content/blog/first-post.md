@@ -1,7 +1,7 @@
 ---
 title: "My First Post on My Own Website!!!"
 description: "Hi, I'm Chunyang! Welcome to my website."
-pubDate: "2026.02.11"
+pubDate: "2026-02-11"
 tags: ["General"]
 ---
 
@@ -39,7 +39,7 @@ This is a [link to google](https://www.google.com).
 
 This is an image:
 
-![alt text](./IMG_0164.JPG)
+![alt text](/images/blog/IMG_0164.JPG)
 
 This is a table:
 
@@ -47,4 +47,3 @@ This is a table:
 |----------|----------|----------|
 | Cell 1   | Cell 2   | Cell 3   |
 | Cell 4   | Cell 5   | Cell 6   |
-
