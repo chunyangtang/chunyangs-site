@@ -1,0 +1,264 @@
+---
+import { Image } from 'astro:assets';
+import { Camera, Dumbbell, Music, MapPin, BookOpen, ArrowRight, ArrowLeft, Disc, Wind, Activity, Globe } from 'lucide-react';
+
+// --- PLACEHOLDERS (Replace with specific images for each hobby!) ---
+import photoHobby from '../assets/profile.jpg'; 
+---
+
+<section class="max-w-full py-12">
+    
+    <div class="w-full mx-auto mb-6 flex items-end justify-between px-4">
+        <div>
+            <h2 class="text-3xl md:text-5xl font-bold tracking-tight text-gray-900">
+                Beyond the Lab
+            </h2>
+            <p class="text-lg text-gray-500 mt-2 max-w-xl">
+                A collection of my pursuits in the physical world. Swipe to explore.
+            </p>
+        </div>
+        
+        <div class="hidden md:flex gap-4">
+            <button id="scroll-left" class="p-5 rounded-full border border-gray-200 hover:bg-gray-100 transition-colors text-gray-600">
+                <ArrowLeft size={28} />
+            </button>
+            <button id="scroll-right" class="p-5 rounded-full bg-black text-white hover:bg-gray-800 transition-colors shadow-xl">
+                <ArrowRight size={28} />
+            </button>
+        </div>
+    </div>
+
+    <div 
+        id="hobby-scroll"
+        class="flex gap-4 overflow-x-auto snap-x snap-mandatory px-4 pb-8 no-scrollbar scroll-smooth items-center h-[500px]"
+    >
+
+        <div class="relative flex-none w-full h-full snap-center rounded-3xl overflow-hidden bg-white border border-gray-100 shadow-xl shadow-gray-200/50 flex flex-col md:flex-row">
+            
+            <div class="md:w-1/3 p-8 md:p-10 flex flex-col justify-between z-10 bg-white">
+                <div>
+                    <div class="flex items-center gap-3 text-gray-400 mb-6">
+                        <Camera size={24} />
+                        <span class="font-mono text-sm uppercase tracking-widest">Visual Arts</span>
+                    </div>
+                    <h3 class="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-4">
+                        Capturing<br/><span class="text-gray-400">Light</span>
+                    </h3>
+                    <p class="text-base text-gray-600 leading-relaxed">
+                        Street photography and high-contrast landscapes. Exploring the texture of the world through a <strong class="text-gray-900">Sony A7</strong> lens.
+                    </p>
+                </div>
+                
+                <div class="flex items-center gap-4 mt-8">
+                    <div class="px-4 py-2 bg-gray-100 rounded-full text-sm font-bold text-gray-600">35mm</div>
+                    <div class="px-4 py-2 bg-gray-100 rounded-full text-sm font-bold text-gray-600">B&W</div>
+                </div>
+            </div>
+
+            <div class="md:w-2/3 relative h-full bg-gray-100">
+                <Image 
+                    src={photoHobby} 
+                    alt="Photography" 
+                    class="absolute inset-0 w-full h-full object-cover"
+                    width={1200}
+                    height={800}
+                />
+            </div>
+        </div>
+
+
+        <div class="relative flex-none w-full h-full snap-center rounded-3xl overflow-hidden bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-100 shadow-xl shadow-blue-900/10 flex flex-col md:flex-row">
+             
+            <div class="md:w-1/2 relative h-1/2 md:h-full overflow-hidden">
+                <Image 
+                    src={photoHobby} 
+                    alt="Sports" 
+                    class="absolute inset-0 w-full h-full object-cover mix-blend-overlay opacity-60 grayscale hover:grayscale-0 transition-all duration-1000"
+                    width={800}
+                    height={1000}
+                />
+                <div class="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-transparent mix-blend-multiply"></div>
+                
+                <div class="absolute bottom-10 left-10 text-blue-900">
+                    <h3 class="text-5xl md:text-7xl font-black tracking-tighter uppercase opacity-10">Active</h3>
+                </div>
+            </div>
+
+            <div class="md:w-1/2 p-8 md:p-10 flex flex-col justify-center">
+                <div class="flex items-center gap-3 text-blue-600 mb-6">
+                    <Activity size={24} />
+                    <span class="font-mono text-sm uppercase tracking-widest">Physical Engineering</span>
+                </div>
+                
+                <h3 class="text-3xl md:text-5xl font-bold text-blue-900 mb-6">
+                    Body & Mind
+                </h3>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-white p-6 rounded-3xl shadow-sm border border-blue-100 hover:scale-105 transition-transform">
+                        <Wind class="text-blue-500 mb-3" />
+                        <div class="text-3xl font-bold text-gray-900">10k</div>
+                        <div class="text-xs text-gray-500 font-bold uppercase">Running</div>
+                    </div>
+                    <div class="bg-white p-6 rounded-3xl shadow-sm border border-blue-100 hover:scale-105 transition-transform">
+                        <Dumbbell class="text-purple-500 mb-3" />
+                        <div class="text-3xl font-bold text-gray-900">Daily</div>
+                        <div class="text-xs text-gray-500 font-bold uppercase">Strength</div>
+                    </div>
+                    <div class="bg-white p-6 rounded-3xl shadow-sm border border-blue-100 hover:scale-105 transition-transform">
+                        <div class="w-6 h-6 rounded-full border-2 border-orange-500 mb-3"></div>
+                        <div class="text-3xl font-bold text-gray-900">Wkly</div>
+                        <div class="text-xs text-gray-500 font-bold uppercase">Badminton</div>
+                    </div>
+                    <div class="bg-white p-6 rounded-3xl shadow-sm border border-blue-100 hover:scale-105 transition-transform">
+                        <div class="text-2xl font-bold text-blue-400 mb-3">~</div>
+                        <div class="text-3xl font-bold text-gray-900">1.5km</div>
+                        <div class="text-xs text-gray-500 font-bold uppercase">Swim</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="relative flex-none w-full h-full snap-center rounded-3xl overflow-hidden bg-black shadow-xl shadow-purple-900/20">
+            
+            <Image 
+                src={photoHobby} 
+                alt="Music Background" 
+                class="absolute inset-0 w-full h-full object-cover opacity-40 blur-3xl scale-125"
+                width={100}
+                height={100}
+            />
+            
+            <div class="relative z-10 w-full h-full flex flex-col md:flex-row items-center justify-center p-8 md:p-12 gap-8">
+                
+                <div class="w-full md:w-1/2 aspect-square max-w-md bg-zinc-800 rounded shadow-2xl border border-white/10 relative group overflow-hidden">
+                    <Image 
+                        src={photoHobby} 
+                        alt="Album Art" 
+                        class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                        width={600}
+                        height={600}
+                    />
+                    <div class="absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent opacity-20 pointer-events-none"></div>
+                </div>
+
+                <div class="w-full md:w-1/2 text-white">
+                     <div class="flex items-center gap-3 text-pink-400 mb-6">
+                        <Disc size={24} class="animate-spin-slow" />
+                        <span class="font-mono text-sm uppercase tracking-widest">Now Playing</span>
+                    </div>
+                    
+                    <h3 class="text-4xl md:text-6xl font-bold tracking-tighter mb-2">
+                        Soundscapes
+                    </h3>
+                    <p class="text-lg text-white/60 font-light mb-6">
+                        Taylor Swift • Pop • Lo-Fi
+                    </p>
+
+                    <div class="w-full h-1 bg-white/20 rounded-full mb-4 overflow-hidden">
+                        <div class="w-1/3 h-full bg-pink-500 rounded-full"></div>
+                    </div>
+                    <div class="flex justify-between text-xs font-mono text-white/40">
+                        <span>1:24</span>
+                        <span>3:45</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="relative flex-none w-full h-full snap-center rounded-3xl overflow-hidden bg-stone-900 shadow-xl">
+            <Image 
+                src={photoHobby} 
+                alt="Travel" 
+                class="absolute inset-0 w-full h-full object-cover brightness-[0.85] group-hover:brightness-100 transition-all duration-1000"
+                width={1600}
+                height={900}
+            />
+            
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+
+            <div class="absolute bottom-0 left-0 w-full p-8 md:p-12">
+                <div class="flex items-center gap-3 text-amber-400 mb-2">
+                    <Globe size={20} />
+                    <span class="font-mono text-xs uppercase tracking-widest">Exploration</span>
+                </div>
+                <h3 class="text-4xl md:text-6xl font-bold text-white mb-4">
+                    The Unknown
+                </h3>
+                 <div class="flex flex-wrap gap-3">
+                    <span class="px-4 py-2 text-sm rounded-full border border-white/30 text-white backdrop-blur-md bg-white/10">National Parks</span>
+                    <span class="px-4 py-2 text-sm rounded-full border border-white/30 text-white backdrop-blur-md bg-white/10">City Scales</span>
+                    <span class="px-4 py-2 text-sm rounded-full border border-white/30 text-white backdrop-blur-md bg-white/10">Hiking</span>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="relative flex-none w-full h-full snap-center rounded-3xl overflow-hidden bg-[#f4ecd8] border border-stone-200 shadow-xl flex flex-col md:flex-row items-center justify-center p-8 md:p-12">
+            
+            <div class="max-w-2xl text-center">
+                <BookOpen size={40} class="text-stone-800 mx-auto mb-6" />
+                
+                <h3 class="text-4xl md:text-6xl font-serif text-stone-900 font-bold mb-6 leading-tight">
+                    "The universe is a dark forest."
+                </h3>
+                
+                <p class="text-lg md:text-xl font-serif text-stone-600 italic mb-8">
+                    — Liu Cixin, The Three-Body Problem
+                </p>
+
+                <div class="h-px w-32 bg-stone-400 mx-auto mb-12"></div>
+
+                <div class="flex justify-center gap-4 text-stone-500 font-sans text-sm font-bold uppercase tracking-widest">
+                    <span>Sci-Fi</span>
+                    <span>•</span>
+                    <span>Philosophy</span>
+                    <span>•</span>
+                    <span>History</span>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Removed spacer since we want internal scrolling or full width adjustment, keeping it minimal -->
+
+    </div>
+
+</section>
+
+<script>
+    const scrollContainer = document.getElementById('hobby-scroll');
+    const leftBtn = document.getElementById('scroll-left');
+    const rightBtn = document.getElementById('scroll-right');
+
+    if (scrollContainer && leftBtn && rightBtn) {
+        rightBtn.addEventListener('click', () => {
+            const cardWidth = scrollContainer.querySelector('div')?.clientWidth || 500;
+            scrollContainer.scrollBy({ left: cardWidth + 16, behavior: 'smooth' });
+        });
+
+        leftBtn.addEventListener('click', () => {
+            const cardWidth = scrollContainer.querySelector('div')?.clientWidth || 500;
+            scrollContainer.scrollBy({ left: -(cardWidth + 16), behavior: 'smooth' });
+        });
+    }
+</script>
+
+<style>
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+    .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+    .animate-spin-slow {
+        animation: spin 8s linear infinite;
+    }
+    @keyframes spin {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
+</style>
