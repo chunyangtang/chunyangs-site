@@ -41,6 +41,7 @@ data/
 
 ## Content Notes
 
-- Blog posts are under `src/content/blog/*.md`.
+- Blog posts are under `src/content/blog/<slug>/index.md`.
+- Post images can live next to the markdown file (for example `src/content/blog/<slug>/image.jpg`) and be referenced as `./image.jpg` in the markdown.
 - Site-wide profile/contact values are centralized in `data/site.ts`.
 - CV and publication data live in `data/cv.ts`.

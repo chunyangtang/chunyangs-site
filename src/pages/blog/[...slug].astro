@@ -1,18 +1,25 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 
 // 1. Generate a path for EVERY post found in src/content/blog
 export async function getStaticPaths() {
 	const posts = await getCollection('blog');
-	return posts.map((post) => ({
-		params: { slug: post.slug },
-		props: post,
-	}));
+	return posts.reduce((paths, post) => {
+		const normalizedSlug = post.id.replace(/\/index$/, '');
+		if (!normalizedSlug) return paths;
+
+		paths.push({
+			params: { slug: normalizedSlug },
+			props: post,
+		});
+
+		return paths;
+	}, []);
 }
 
 const post = Astro.props;
-const { Content } = await post.render();
+const { Content } = await render(post);
 ---
 
 <Layout title={post.data.title}>

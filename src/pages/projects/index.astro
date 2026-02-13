@@ -2,11 +2,12 @@
 import Layout from '../../layouts/Layout.astro';
 import { Image } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
-import { Github, ExternalLink, Layers, Code2 } from 'lucide-react';
+import { Github, ExternalLink, Layers, Code2, Globe } from 'lucide-react';
 import { siteProfile } from '../../../data/site';
 
-import projectScreen1 from '../../assets/projects/placeholder-1.png'; 
-import projectScreen2 from '../../assets/projects/placeholder-2.png';
+import projectEyeClinic from '../../assets/projects/AIEyeClinic.png';
+import projectPersonalWebsite from '../../assets/projects/PersonalWebsite.png';
+import projectMacSoftware from '../../assets/projects/macOSSoftware.jpeg';
 
 interface Project {
   title: string;
@@ -15,40 +16,48 @@ interface Project {
   category: string;
   repo: string | null;
   demo: string | null;
+  website: string | null;
   image: ImageMetadata;
   status: 'Active' | 'Completed' | 'Archived';
 }
 
 const projects: Project[] = [
   {
-    title: "RetiAR: Optical Neural Network Sim",
-    description: "A Python framework for simulating diffractive optical neural networks (DONNs) with support for hardware-aware training. Built to model thermal noise and phase errors in analog chips.",
-    tech: ["Python", "PyTorch", "CUDA", "Optics"],
-    category: "Simulation Tool",
-    repo: null,
+    title: "Clinical AI Annotation & Deployment Platform",
+    description: `A full-stack system for medical image annotation, AI inference visualization, and physician feedback collection. 
+    
+Built to support clinical research workflows and deployed for internal testing at Beijing Tsinghua Changgung Hospital.`,
+    tech: ["Python", "Tkinter", "Flask", "FastAPI", "React", "Tailwind CSS"],
+    category: "Full-Stack Development",
+    repo: "https://github.com/chunyangtang/ImageLabeller",
     demo: null,
-    image: projectScreen1,
+    website: null,
+    image: projectEyeClinic,
     status: "Active"
   },
   {
-    title: "Personal Academic Portfolio",
-    description: "The website you are looking at right now. A high-performance, accessible academic portfolio built with Astro and Tailwind CSS. Features LaTeX support for math blogs and auto-optimized images.",
+    title: "Personal Website",
+    description: "The website you are looking at right now. A fully custom designed personal website built with Astro and Tailwind CSS.",
     tech: ["Astro", "TypeScript", "Tailwind", "Vercel"],
     category: "Web Development",
     repo: "https://github.com/chunyangtang/chunyangs-site",
     demo: null,
-    image: projectScreen2,
+    website: null,
+    image: projectPersonalWebsite,
     status: "Completed"
   },
   {
-    title: "Lens-Free Microscopy Reconstructor",
-    description: "An end-to-end deep learning pipeline to reconstruct high-resolution microscopy images from holographic sensor data. Achieves 40% better SSIM than traditional back-propagation.",
-    tech: ["TensorFlow", "OpenCV", "Docker"],
-    category: "Computer Vision",
+    title: "Awesome Productivity Software for macOS",
+    description: `macOS is well known for its efficiency, driven by both native workflows and community-built tools.
+
+Here, we have compiled a collection of macOS productivity tools on Notion, with notes on open-source status, pricing, permissions, and hands-on experience.`,
+    tech: ["macOS", "Productivity", "Software", "Collection"],
+    category: "Software Collection",
     repo: null,
     demo: null,
-    image: projectScreen1,
-    status: "Archived"
+    website: "https://chunyangtang.notion.site/macOS-c80a2a255d9f48fc8a05759aee9b9dbb?pvs=74",
+    image: projectMacSoftware,
+    status: "Completed"
   }
 ];
 
@@ -71,11 +80,10 @@ const isExternalUrl = (value: string | null | undefined) =>
     
     <header class="mb-16 max-w-2xl">
         <h1 class="text-4xl font-bold tracking-tight text-gray-900 dark:text-gray-100 mb-4">
-            Lab & <span class="text-blue-600 dark:text-blue-400">Open Source</span>
+            Things I <span class="text-blue-600 dark:text-blue-400">Build</span>
         </h1>
         <p class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
-            A collection of tools, simulations, and experiments I've built,
-            ranging from optical computing frameworks to web applications.
+            From research prototypes to web tools and curated resources, this page collects the systems and ideas I've brought to life.
         </p>
     </header>
 
@@ -125,7 +133,7 @@ const isExternalUrl = (value: string | null | undefined) =>
                         {project.title}
                     </h2>
                     
-                    <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
+                    <p class="text-gray-600 dark:text-gray-400 leading-relaxed whitespace-pre-line mb-6">
                         {project.description}
                     </p>
 
@@ -137,7 +145,7 @@ const isExternalUrl = (value: string | null | undefined) =>
                         ))}
                     </div>
 
-                    {(isExternalUrl(project.repo) || isExternalUrl(project.demo)) && (
+                    {(isExternalUrl(project.repo) || isExternalUrl(project.demo) || isExternalUrl(project.website)) && (
                         <div class="flex gap-4">
                             {isExternalUrl(project.repo) && (
                                 <a href={project.repo} target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-4 py-2 bg-gray-900 dark:bg-white text-gray-100 dark:text-black rounded-lg hover:bg-gray-800 dark:hover:bg-gray-200 transition-all hover:-translate-y-0.5 shadow-lg shadow-gray-900/20 dark:shadow-white/10 text-sm font-medium">
@@ -151,6 +159,12 @@ const isExternalUrl = (value: string | null | undefined) =>
                                     Live Demo
                                 </a>
                             )}
+                            {isExternalUrl(project.website) && (
+                                <a href={project.website} target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-4 py-2 bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-all hover:-translate-y-0.5 text-sm font-medium">
+                                    <Globe size={18} />
+                                    Website
+                                </a>
+                            )}
                         </div>
                     )}
 
@@ -162,10 +176,10 @@ const isExternalUrl = (value: string | null | undefined) =>
     <div class="mt-24 p-8 bg-gray-50 dark:bg-gray-900/50 rounded-2xl border border-gray-100 dark:border-gray-800 text-center">
         <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">Have a project in mind?</h3>
         <p class="text-gray-600 dark:text-gray-400 mb-6 max-w-md mx-auto">
-            I'm always open to discussing new ideas in optical computing and AI.
+            I'm always open to thoughtful conversations — whether about research, interdisciplinary ideas, or interesting projects worth building.
         </p>
         <a href={`mailto:${siteProfile.email}`} class="inline-flex items-center text-blue-600 dark:text-blue-400 font-medium hover:underline decoration-blue-200 dark:decoration-blue-800 decoration-2 underline-offset-4">
-            Start a collaboration &rarr;
+            Reach out via email &rarr;
         </a>
     </div>
 

@@ -1,5 +1,5 @@
 ---
-title: "My First Post on My Own Website!!!"
+title: "First Post on My Own Website!!!"
 description: "Hi, I'm Chunyang! Welcome to my website."
 pubDate: "2026-02-11"
 tags: ["General"]
@@ -39,7 +39,7 @@ This is a [link to google](https://www.google.com).
 
 This is an image:
 
-![alt text](/images/blog/IMG_0164.JPG)
+![alt text](./IMG_0164.JPG)
 
 This is a table:
 

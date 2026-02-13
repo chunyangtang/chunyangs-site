@@ -9,7 +9,7 @@ interface Publication {
   venue: string;
   type: 'Conference' | 'Journal' | 'Workshop';
   year: string;
-  image: ImageMetadata; // This ensures you pass a valid imported image
+  image: ImageMetadata;
   links: {
     pdf?: string;
     code?: string;
@@ -35,7 +35,7 @@ export const education: Education[] = [
     department: "College of AI",
     departmentUrl: "https://collegeai.tsinghua.edu.cn/en/",
     year: "2025 - Present",
-    details: "Focus on Optical Computing and efficient ML inference."
+    details: ""//Focus on medical AI system and photonic computing."
   },
   {
     degree: "B.S. in Automation",
@@ -43,16 +43,17 @@ export const education: Education[] = [
     department: "Department of Automation",
     departmentUrl: "https://www.au.tsinghua.edu.cn/en/",
     year: "2021 - 2025",
-    details: "Graduated with Honors. Thesis on Photonic Crystals."
+    details: ""//Graduated with Honors. Thesis on Photonic Computing."
   }
 ];
 
 export const publications: Publication[] = [
   {
-    title: "Diffractive Optical Neural Networks for High-Speed Inference",
-    authors: "Chunyang Tang, A. Professor, B. Colleague",
-    venue: "NeurIPS 2025",
-    type: "Conference",
+    title: "Nanophotonics towards practical optical computing",
+    authors: "Yitong Chen, Guoqiang Yang, Tao Yan, Chunyang Tang, Jiamin Wu, Qionghai Dai",
+    venue: "Nature Nanotechnology",
+    type: "Journal",
+    year: "2026",
     image: paperNNT,
     links: {}
   },

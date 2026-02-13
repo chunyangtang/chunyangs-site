@@ -1,6 +1,27 @@
 ---
+import { getCollection } from 'astro:content';
 import { ArrowRight, BookOpen, GraduationCap, Github, Mail, Linkedin, MapPin } from 'lucide-react';
 import { siteProfile } from '../../data/site';
+
+const latestPost = (await getCollection('blog'))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())[0] ?? null;
+
+const latestPostHref = latestPost
+  ? `/blog/${latestPost.id.replace(/\/index$/, '')}`
+  : '/blog';
+const latestPostTitle = latestPost?.data.title ?? 'No posts yet';
+const latestPostDate = latestPost
+  ? latestPost.data.pubDate.toLocaleDateString(undefined, {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+    })
+  : 'Coming soon';
+
+const THIRTY_DAYS_MS = 30 * 24 * 60 * 60 * 1000;
+const isLatestPostNew = latestPost
+  ? Date.now() - latestPost.data.pubDate.getTime() <= THIRTY_DAYS_MS
+  : false;
 ---
 
 <div class="grid grid-cols-1 md:grid-cols-4 gap-4 auto-rows-[180px]">
@@ -10,9 +31,9 @@ import { siteProfile } from '../../data/site';
     
     <div class="z-10">
       <div class="flex items-center gap-3 mb-4">
-         <span class="px-3 py-1 bg-white/10 rounded-full text-xs font-medium backdrop-blur-sm text-blue-200 border border-white/10">
+         <!-- <span class="px-3 py-1 bg-white/10 rounded-full text-xs font-medium backdrop-blur-sm text-blue-200 border border-white/10">
            Open for Collaboration
-         </span>
+         </span> -->
       </div>
       <h1 class="text-4xl font-bold tracking-tight mb-2">{siteProfile.name}</h1>
       <p class="text-xl text-gray-300 font-light mb-6">{siteProfile.role}</p>
@@ -48,32 +69,38 @@ import { siteProfile } from '../../data/site';
         <ul class="space-y-2 text-sm text-gray-500 dark:text-gray-400">
             <li class="flex items-center gap-2">
                 <span class="w-1.5 h-1.5 bg-blue-400 rounded-full"></span>
-                Optical Computing
+                AI for Medicine
             </li>
             <li class="flex items-center gap-2">
                 <span class="w-1.5 h-1.5 bg-blue-400 rounded-full"></span>
-                Machine Learning
+                Medical Foundation Models
             </li>
-             <li class="flex items-center gap-2">
+            <li class="flex items-center gap-2">
                 <span class="w-1.5 h-1.5 bg-blue-400 rounded-full"></span>
-                Optimization
+                Reinforcement Learning
+            </li>
+            <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 bg-blue-400 rounded-full"></span>
+                Diffractive Neural Networks
             </li>
         </ul>
     </div>
     
     <div class="relative z-10 mt-4 flex items-center text-blue-600 dark:text-blue-400 text-sm font-medium">
-        View Publications <ArrowRight size={16} class="ml-1 group-hover:translate-x-1 transition-transform" />
+        Academic Profile <ArrowRight size={16} class="ml-1 group-hover:translate-x-1 transition-transform" />
     </div>
   </a>
 
-  <a href="/blog" class="md:col-span-1 md:row-span-1 rounded-3xl bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-100 dark:border-indigo-900/50 p-6 flex flex-col justify-between group hover:bg-indigo-100 dark:hover:bg-indigo-900/40 transition-colors">
+  <a href={latestPostHref} class="md:col-span-1 md:row-span-1 rounded-3xl bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-100 dark:border-indigo-900/50 p-6 flex flex-col justify-between group hover:bg-indigo-100 dark:hover:bg-indigo-900/40 transition-colors">
       <div class="flex justify-between items-start">
         <BookOpen size={24} class="text-indigo-600 dark:text-indigo-400" />
-        <span class="text-xs font-bold bg-white dark:bg-indigo-900 px-2 py-1 rounded text-indigo-600 dark:text-indigo-300">NEW</span>
+        {isLatestPostNew && (
+          <span class="text-xs font-bold bg-white dark:bg-indigo-900 px-2 py-1 rounded text-indigo-600 dark:text-indigo-300">NEW</span>
+        )}
       </div>
       <div>
-           <h3 class="font-bold text-gray-800 dark:text-gray-200 text-sm mb-1 line-clamp-2">Understanding Loss Functions in High-Dim Space</h3>
-          <p class="text-xs text-gray-500 dark:text-gray-400">Nov 20, 2025</p>
+           <h3 class="font-bold text-gray-800 dark:text-gray-200 text-sm mb-1 line-clamp-2">{latestPostTitle}</h3>
+          <p class="text-xs text-gray-500 dark:text-gray-400">{latestPostDate}</p>
       </div>
   </a>
 
@@ -86,7 +113,7 @@ import { siteProfile } from '../../data/site';
                 <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                 <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
               </span>
-               <p class="text-xs text-emerald-700 dark:text-emerald-300 font-medium">Writing Thesis</p>
+               <p class="text-xs text-emerald-700 dark:text-emerald-300 font-medium">Deep in research mode</p>
           </div>
       </div>
   </div>

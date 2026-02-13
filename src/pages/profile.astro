@@ -47,19 +47,13 @@ const isExternalUrl = (value: string | null | undefined) =>
                 <a href={siteProfile.linkedinUrl} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile" class="text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
                     <Linkedin size={22} />
                 </a>
-                {isExternalUrl(siteProfile.googleScholarUrl) ? (
-                    <a href={siteProfile.googleScholarUrl} target="_blank" rel="noopener noreferrer" aria-label="Google Scholar profile" class="text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-                        <GraduationCap size={22} />
-                    </a>
-                ) : (
-                    <span class="text-gray-400 opacity-60 cursor-not-allowed" title="Google Scholar (coming soon)" aria-disabled="true">
-                        <GraduationCap size={22} />
-                    </span>
-                )}
+                <a href={siteProfile.googleScholarUrl} target="_blank" rel="noopener noreferrer" aria-label="Google Scholar profile" class="text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                    <GraduationCap size={22} />
+                </a>
             </div>
           </div>
 
-          <button
+          <!-- <button
             type="button"
             disabled
             title="CV download will be available soon."
@@ -67,7 +61,7 @@ const isExternalUrl = (value: string | null | undefined) =>
           >
             <Download size={18} />
             <span class="font-medium">Download CV (Soon)</span>
-          </button>
+          </button> -->
 
         </div>
       </aside>
@@ -80,12 +74,20 @@ const isExternalUrl = (value: string | null | undefined) =>
              About Me
           </h2>
           <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
-            I am a PhD student at <a href="https://www.tsinghua.edu.cn/en/" target="_blank" rel="noopener noreferrer" class="text-blue-600 font-medium hover:underline decoration-blue-200 decoration-2 underline-offset-2">Tsinghua University</a> in the College of AI. 
-            My research lies at the intersection of <strong class="text-gray-900 dark:text-gray-100 font-semibold">Optical Computing</strong> and <strong class="text-gray-900 dark:text-gray-100 font-semibold">Machine Learning</strong>.
+            My name is Chunyang Tang (唐春洋).
+            I am a PhD student at <a href="https://collegeai.tsinghua.edu.cn/en/" target="_blank" rel="noopener noreferrer" class="text-blue-600 font-medium hover:underline decoration-blue-200 decoration-2 underline-offset-2">College of AI</a>, 
+            <a href="https://www.tsinghua.edu.cn/en/" target="_blank" rel="noopener noreferrer" class="text-blue-600 font-medium hover:underline decoration-blue-200 decoration-2 underline-offset-2">Tsinghua University</a>  
+            advised by <a href="https://media.au.tsinghua.edu.cn/info/1009/1112.htm" target="_blank" rel="noopener noreferrer" class="text-blue-600 font-medium hover:underline decoration-blue-200 decoration-2 underline-offset-2">Prof. Qionghai Dai (戴琼海)</a>.
+            My current research focuses on <strong class="text-gray-900 dark:text-gray-100 font-semibold">AI for ophthalmology</strong>, particularly developing algorithms for detecting subtle lesions in fundus images. I am interested in translating advanced machine learning methods into clinically meaningful systems that can operate reliably in real-world environments.
           </p>
           <p class="text-gray-600 dark:text-gray-300 leading-relaxed mt-4">
-            Currently, I am exploring how to implement robust loss functions on analog optical chips to accelerate training efficiency. 
-            Before this, I worked on nanophotonics and gradient-free optimization methods.
+            I am interested in the evolving landscape of large-scale AI, including foundation models, LLMs, diffusion models, and multimodal vision–language architectures. I am particularly curious about their adaptation, alignment, and robustness in real-world domains.
+          </p>
+          <p class="text-gray-600 dark:text-gray-300 leading-relaxed mt-4">
+            Previously, I worked on photoelectronic computing and diffractive neural networks (D²NN), investigating optical approaches to computation. These experiences shaped my long-term interest in the relationship between computational architecture and intelligent behavior.
+          </p>
+          <p class="text-gray-600 dark:text-gray-300 leading-relaxed mt-4">
+            I am also intellectually interested in embodied intelligence and world-model-based learning, particularly how structured internal representations enable generalization, though this remains an exploratory direction in my work.
           </p>
         </section>
 

@@ -2,7 +2,7 @@ export const siteProfile = {
   name: "Chunyang Tang",
   role: "PhD Candidate",
   affiliation: "Tsinghua University",
-  bio: "Exploring the intersection of Optical Computing and Machine Learning. Building robust AI systems with light and logic.",
+  bio: "Advancing AI for medical vision. Connecting large-scale models with real-world impact.",
   email: "tangcy21@mails.tsinghua.edu.cn",
   githubUrl: "https://github.com/chunyangtang",
   linkedinUrl: "https://linkedin.com/in/chunyang-tang-12a34634a",
