@@ -48,14 +48,14 @@ export const education: Education[] = [
 ];
 
 export const publications: Publication[] = [
-  {
-    title: "Nanophotonics towards practical optical computing",
-    authors: "Yitong Chen, Guoqiang Yang, Tao Yan, Chunyang Tang, Jiamin Wu, Qionghai Dai",
-    venue: "Nature Nanotechnology",
-    type: "Journal",
-    year: "2026",
-    image: paperNNT,
-    links: {}
-  },
+  // {
+  //   title: "Nanophotonics towards practical optical computing",
+  //   authors: "Yitong Chen, Guoqiang Yang, Tao Yan, Chunyang Tang, Jiamin Wu, Qionghai Dai",
+  //   venue: "Nature Nanotechnology",
+  //   type: "Journal",
+  //   year: "2026",
+  //   image: paperNNT,
+  //   links: {}
+  // },
 
 ];

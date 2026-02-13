@@ -9,6 +9,9 @@ import { siteProfile } from '../../data/site';
 
 const isExternalUrl = (value: string | null | undefined) =>
   typeof value === 'string' && /^https?:\/\//.test(value);
+
+const aboutLinkClass =
+  'text-blue-600 dark:text-blue-400 font-medium decoration-2 underline-offset-3 decoration-blue-400/50 dark:decoration-blue-700/70 hover:text-blue-700 dark:hover:text-blue-300 hover:decoration-blue-500 dark:hover:decoration-blue-500 transition-colors';
 ---
 
 <Layout title="Profile | Chunyang">
@@ -75,9 +78,9 @@ const isExternalUrl = (value: string | null | undefined) =>
           </h2>
           <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
             My name is Chunyang Tang (唐春洋).
-            I am a PhD student at <a href="https://collegeai.tsinghua.edu.cn/en/" target="_blank" rel="noopener noreferrer" class="text-blue-600 font-medium hover:underline decoration-blue-200 decoration-2 underline-offset-2">College of AI</a>, 
-            <a href="https://www.tsinghua.edu.cn/en/" target="_blank" rel="noopener noreferrer" class="text-blue-600 font-medium hover:underline decoration-blue-200 decoration-2 underline-offset-2">Tsinghua University</a>  
-            advised by <a href="https://media.au.tsinghua.edu.cn/info/1009/1112.htm" target="_blank" rel="noopener noreferrer" class="text-blue-600 font-medium hover:underline decoration-blue-200 decoration-2 underline-offset-2">Prof. Qionghai Dai (戴琼海)</a>.
+            I am a PhD student at <a href="https://collegeai.tsinghua.edu.cn/en/" target="_blank" rel="noopener noreferrer" class={aboutLinkClass}>College of AI</a>, 
+            <a href="https://www.tsinghua.edu.cn/en/" target="_blank" rel="noopener noreferrer" class={aboutLinkClass}>Tsinghua University</a>  
+            advised by <a href="https://media.au.tsinghua.edu.cn/info/1009/1112.htm" target="_blank" rel="noopener noreferrer" class={aboutLinkClass}>Prof. Qionghai Dai (戴琼海)</a>.
             My current research focuses on <strong class="text-gray-900 dark:text-gray-100 font-semibold">AI for ophthalmology</strong>, particularly developing algorithms for detecting subtle lesions in fundus images. I am interested in translating advanced machine learning methods into clinically meaningful systems that can operate reliably in real-world environments.
           </p>
           <p class="text-gray-600 dark:text-gray-300 leading-relaxed mt-4">
