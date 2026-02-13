@@ -3,11 +3,19 @@ import { getCollection } from 'astro:content';
 import { ArrowRight, BookOpen, GraduationCap, Github, Mail, Linkedin, MapPin } from 'lucide-react';
 import { siteProfile } from '../../data/site';
 
+const getPostSlug = (post: { id: string; slug?: string }) =>
+  post.slug && post.slug.length > 0
+    ? post.slug
+    : post.id
+        .replace(/\/index\.(md|mdx)$/, '')
+        .replace(/\/index$/, '')
+        .replace(/\.(md|mdx)$/, '');
+
 const latestPost = (await getCollection('blog'))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())[0] ?? null;
 
 const latestPostHref = latestPost
-  ? `/blog/${latestPost.id.replace(/\/index$/, '')}`
+  ? `/blog/${getPostSlug(latestPost)}`
   : '/blog';
 const latestPostTitle = latestPost?.data.title ?? 'No posts yet';
 const latestPostDate = latestPost

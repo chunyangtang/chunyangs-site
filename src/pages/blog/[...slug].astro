@@ -6,7 +6,13 @@ import Layout from '../../layouts/Layout.astro';
 export async function getStaticPaths() {
 	const posts = await getCollection('blog');
 	return posts.reduce((paths, post) => {
-		const normalizedSlug = post.id.replace(/\/index$/, '');
+		const normalizedSlug =
+			post.slug && post.slug.length > 0
+				? post.slug
+				: post.id
+						.replace(/\/index\.(md|mdx)$/, '')
+						.replace(/\/index$/, '')
+						.replace(/\.(md|mdx)$/, '');
 		if (!normalizedSlug) return paths;
 
 		paths.push({

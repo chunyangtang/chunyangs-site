@@ -2,6 +2,14 @@
 import Layout from '../../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 
+const getPostSlug = (post: { id: string; slug?: string }) =>
+	post.slug && post.slug.length > 0
+		? post.slug
+		: post.id
+				.replace(/\/index\.(md|mdx)$/, '')
+				.replace(/\/index$/, '')
+				.replace(/\.(md|mdx)$/, '');
+
 // Get all posts and sort by date (newest first)
 const posts = (await getCollection('blog')).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
@@ -19,7 +27,7 @@ const posts = (await getCollection('blog')).sort(
 		) : (
 			<div class="space-y-8">
 				{posts.map((post) => (
-					<a href={`/blog/${post.id.replace(/\/index$/, '')}`} class="block group">
+					<a href={`/blog/${getPostSlug(post)}`} class="block group">
 						<article class="flex flex-col md:flex-row gap-4 md:items-baseline border-b border-gray-100 dark:border-gray-800 pb-8 hover:bg-gray-50/50 dark:hover:bg-gray-900/50 -mx-4 px-4 rounded-2xl transition-colors">
 							<time datetime={post.data.pubDate.toISOString()} class="text-sm text-gray-400 dark:text-gray-500 font-mono min-w-[100px]">
 								{post.data.pubDate.toLocaleDateString(undefined, {
