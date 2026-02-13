@@ -24,9 +24,9 @@ const isLatestPostNew = latestPost
   : false;
 ---
 
-<div class="grid grid-cols-1 md:grid-cols-4 gap-4 auto-rows-[180px]">
+<div class="grid grid-cols-1 gap-4 md:grid-cols-4 md:auto-rows-[240px] xl:auto-rows-[190px]">
 
-  <div class="md:col-span-2 md:row-span-2 rounded-3xl bg-gray-900 dark:bg-black text-gray-100 border border-gray-800 dark:border-gray-700 p-8 flex flex-col justify-between relative overflow-hidden group">
+  <div class="md:col-span-2 md:row-span-2 rounded-3xl bg-gray-900 dark:bg-black text-gray-100 border border-gray-800 dark:border-gray-700 p-6 md:p-8 flex flex-col justify-between relative overflow-hidden group">
     <div class="absolute top-0 right-0 w-64 h-64 bg-blue-600 rounded-full blur-[100px] opacity-20 -mr-16 -mt-16 transition-opacity group-hover:opacity-30"></div>
     
     <div class="z-10">
@@ -35,8 +35,8 @@ const isLatestPostNew = latestPost
            Open for Collaboration
          </span> -->
       </div>
-      <h1 class="text-4xl font-bold tracking-tight mb-2">{siteProfile.name}</h1>
-      <p class="text-xl text-gray-300 font-light mb-6">{siteProfile.role}</p>
+      <h1 class="text-3xl md:text-4xl font-bold tracking-tight mb-2">{siteProfile.name}</h1>
+      <p class="text-lg md:text-xl text-gray-300 font-light mb-5 md:mb-6">{siteProfile.role}</p>
       <p class="text-gray-400 text-sm leading-relaxed max-w-sm">
         {siteProfile.bio}
       </p>

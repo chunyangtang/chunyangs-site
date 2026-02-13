@@ -7,17 +7,24 @@ tags: ["General"]
 
 ## Hi, I'm Chunyang!
 
-
-
-### A comprehensive test about the website's rendering feature
+### Tests about the website's markdown rendering feature
 
 **Bold text** and *italic text*
 
-- [ ] Unordered list
-- [ ] Unordered list
-- [x] Ordered list
-- [x] Ordered list
-- [x] Ordered list
+- unordered list
+- unordered list
+- unordered list
+
+1. ordered list
+2. ordered list
+3. ordered list
+
+
+- [ ] unchecked list
+- [ ] unchecked list
+- [x] checked list
+- [x] checked list
+- [x] checked list
 
 Math: $E = mc^2$
 

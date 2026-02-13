@@ -3,7 +3,6 @@ import { Image } from "astro:assets";
 import {
     Camera,
     Dumbbell,
-    BookOpen,
     ArrowRight,
     ArrowLeft,
     Disc,
@@ -27,7 +26,7 @@ import TravelImage2 from "../assets/hobbies/IMG_4073.jpeg";
             >
                 Beyond the Lab
             </h2>
-            <p class="text-lg text-gray-500 dark:text-gray-400 mt-6 max-w-2xl">
+            <p class="text-base md:text-lg text-gray-500 dark:text-gray-400 mt-4 md:mt-6 max-w-2xl">
                 Research shapes my thinking, but curiosity shapes my life.
                 Beyond the lab, I embrace a multidimensional journey that
                 extends far past a single discipline.
@@ -54,11 +53,11 @@ import TravelImage2 from "../assets/hobbies/IMG_4073.jpeg";
 
     <div
         id="hobby-scroll"
-        class="flex gap-4 overflow-x-auto snap-x snap-mandatory px-4 pb-8 no-scrollbar scroll-smooth items-center h-[500px]"
+        class="flex gap-4 overflow-x-auto snap-x snap-mandatory px-4 pb-8 no-scrollbar scroll-smooth items-start md:items-stretch h-auto md:h-[620px] lg:h-[560px]"
     >
-        <div class="relative flex-none w-full h-full snap-center rounded-3xl overflow-hidden bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 border border-blue-100 dark:border-blue-900/30 shadow-xl shadow-blue-900/10 flex flex-col md:flex-row">
+        <div class="relative flex-none w-full h-auto min-h-[620px] sm:min-h-[640px] md:min-h-0 md:h-full snap-center rounded-3xl overflow-hidden bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 border border-blue-100 dark:border-blue-900/30 shadow-xl shadow-blue-900/10 flex flex-col md:flex-row">
             {/* Left photo */}
-            <div class="md:w-1/2 relative h-[42%] md:h-full overflow-hidden">
+            <div class="md:w-1/2 relative h-56 sm:h-64 md:h-full overflow-hidden">
                 <Image
                 src={RunningImage}
                 alt="Running medal"
@@ -83,26 +82,26 @@ import TravelImage2 from "../assets/hobbies/IMG_4073.jpeg";
             </div>
 
             {/* Right: Content */}
-            <div class="md:w-1/2 p-8 md:p-10 flex flex-col justify-center">
-                <div class="flex items-center gap-3 text-blue-700 dark:text-blue-300 mb-6">
+            <div class="md:w-1/2 p-5 sm:p-6 md:p-10 flex flex-col justify-start md:justify-center">
+                <div class="flex items-center gap-3 text-blue-700 dark:text-blue-300 mb-4 md:mb-6">
                 <Activity size={22} />
                 <span class="font-mono text-sm uppercase tracking-widest">
                     Physical Engineering
                 </span>
                 </div>
 
-                <h3 class="text-2xl md:text-4xl font-bold text-blue-950 dark:text-blue-50 mb-4 tracking-tight">
+                <h3 class="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-950 dark:text-blue-50 mb-4 tracking-tight">
                 Strength for the Long Run
                 </h3>
 
-                <p class="text-base md:text-lg text-blue-950/70 dark:text-blue-100/70 mb-6 leading-relaxed max-w-xl">
+                <p class="text-base md:text-lg text-blue-950/70 dark:text-blue-100/70 mb-5 md:mb-6 leading-relaxed max-w-xl">
                 Sport is how I reset, regulate, and rebuild. It keeps my energy stable,
                 my thinking clear, and my work sustainable.
                 </p>
 
                 {/* Primary focus tiles */}
-                <div class="grid grid-cols-2 gap-4 mb-6">
-                <div class="bg-white/80 dark:bg-blue-950/30 p-5 rounded-3xl shadow-sm border border-blue-100/80 dark:border-blue-900/30 hover:scale-[1.02] transition-transform">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-5 md:mb-6">
+                <div class="bg-white/80 dark:bg-blue-950/30 p-4 sm:p-5 rounded-3xl shadow-sm border border-blue-100/80 dark:border-blue-900/30 hover:scale-[1.02] transition-transform">
                     <Wind class="text-blue-600 dark:text-blue-300 mb-3" />
                     <div class="text-lg font-semibold text-blue-950 dark:text-blue-50">
                     Running
@@ -112,7 +111,7 @@ import TravelImage2 from "../assets/hobbies/IMG_4073.jpeg";
                     </div>
                 </div>
 
-                <div class="bg-white/80 dark:bg-blue-950/30 p-5 rounded-3xl shadow-sm border border-blue-100/80 dark:border-blue-900/30 hover:scale-[1.02] transition-transform">
+                <div class="bg-white/80 dark:bg-blue-950/30 p-4 sm:p-5 rounded-3xl shadow-sm border border-blue-100/80 dark:border-blue-900/30 hover:scale-[1.02] transition-transform">
                     <Dumbbell class="text-indigo-600 dark:text-indigo-300 mb-3" />
                     <div class="text-lg font-semibold text-blue-950 dark:text-blue-50">
                     Strength
@@ -136,10 +135,10 @@ import TravelImage2 from "../assets/hobbies/IMG_4073.jpeg";
             </div>
         </div>
         <div
-            class="relative flex-none w-full h-full snap-center rounded-3xl overflow-hidden bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 shadow-xl shadow-gray-200/50 dark:shadow-black/50 flex flex-col md:flex-row"
+            class="relative flex-none w-full h-auto min-h-[620px] sm:min-h-[640px] md:min-h-0 md:h-full snap-center rounded-3xl overflow-hidden bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 shadow-xl shadow-gray-200/50 dark:shadow-black/50 flex flex-col md:flex-row"
         >
             <div
-                class="md:w-1/3 p-8 md:p-10 flex flex-col justify-between z-10 bg-white dark:bg-gray-900"
+                class="md:w-1/3 p-5 sm:p-6 md:p-10 flex flex-col justify-start md:justify-between gap-6 z-10 bg-white dark:bg-gray-900"
             >
                 <div>
                     <div
@@ -152,7 +151,7 @@ import TravelImage2 from "../assets/hobbies/IMG_4073.jpeg";
                         >
                     </div>
                     <h3
-                        class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-gray-100 leading-tight mb-4"
+                        class="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-gray-100 leading-tight mb-4"
                     >
                         Capturing<br /><span
                             class="text-gray-400 dark:text-gray-600">Light</span
@@ -164,7 +163,7 @@ import TravelImage2 from "../assets/hobbies/IMG_4073.jpeg";
                     </p>
                 </div>
 
-                <div class="flex flex-wrap items-center gap-3 mt-8">
+                <div class="flex flex-wrap items-center gap-2 sm:gap-3">
                     <div class="px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-full text-sm font-bold text-gray-600 dark:text-gray-300">
                         Composition
                     </div>
@@ -177,7 +176,7 @@ import TravelImage2 from "../assets/hobbies/IMG_4073.jpeg";
                 </div>
             </div>
 
-            <div class="md:w-2/3 relative h-full bg-gray-100 dark:bg-gray-800">
+            <div class="md:w-2/3 relative h-56 sm:h-72 md:h-full bg-gray-100 dark:bg-gray-800">
                 <Image
                     src={photoImage}
                     alt="Photography"
@@ -188,7 +187,7 @@ import TravelImage2 from "../assets/hobbies/IMG_4073.jpeg";
             </div>
         </div>
 
-        <div class="relative flex-none w-full h-full snap-center rounded-3xl overflow-hidden bg-black shadow-xl shadow-purple-900/20">
+        <div class="relative flex-none w-full h-auto min-h-[620px] sm:min-h-[640px] md:min-h-0 md:h-full snap-center rounded-3xl overflow-hidden bg-black shadow-xl shadow-purple-900/20">
         {/* Blurred background derived from album cover */}
         <Image
             src={MusicImage}
@@ -200,10 +199,10 @@ import TravelImage2 from "../assets/hobbies/IMG_4073.jpeg";
         {/* Dark overlay for contrast */}
         <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/55 to-black/70" />
 
-        <div class="relative z-10 w-full h-full flex flex-col md:flex-row items-center justify-center p-8 md:p-12 gap-8 md:gap-16">
+        <div class="relative z-10 w-full h-full flex flex-col md:flex-row items-start md:items-center justify-center p-5 sm:p-6 md:p-12 gap-6 md:gap-16">
             {/* Album cover (smaller) */}
             <div class="shrink-0">
-            <div class="relative w-56 md:w-64 aspect-square rounded-2xl overflow-hidden shadow-2xl border border-white/15 bg-zinc-900">
+            <div class="relative w-48 sm:w-56 md:w-64 aspect-square rounded-2xl overflow-hidden shadow-2xl border border-white/15 bg-zinc-900">
                 <Image
                 src={MusicImage}
                 alt="Album Art"
@@ -231,16 +230,16 @@ import TravelImage2 from "../assets/hobbies/IMG_4073.jpeg";
 
             {/* Text content */}
             <div class="w-full md:w-[30rem] text-gray-100">
-            <div class="flex items-center gap-3 text-pink-300 mb-5">
+            <div class="flex items-center gap-3 text-pink-300 mb-4 md:mb-5">
                 <Disc size={22} class="animate-spin-slow" />
                 <span class="font-mono text-xs uppercase tracking-widest">Now Playing</span>
             </div>
 
-            <h3 class="text-4xl md:text-6xl font-bold tracking-tighter leading-[0.95] mb-3">
+            <h3 class="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tighter leading-[0.95] mb-3">
                 My 2025 Sound
             </h3>
 
-            <p class="text-lg text-gray-200/90 font-light mb-6">
+            <p class="text-base sm:text-lg text-gray-200/90 font-light mb-5 md:mb-6">
                 <span class="font-semibold text-white">The Fate of Ophelia</span>
                 <span class="text-white/60"> · </span>
                 <span class="text-white/85">Taylor Swift</span>
@@ -286,11 +285,11 @@ import TravelImage2 from "../assets/hobbies/IMG_4073.jpeg";
         </div>
         </div>
 
-        <div class="group relative flex-none w-full h-full snap-center rounded-3xl overflow-hidden bg-stone-950 shadow-xl">
+        <div class="group relative flex-none w-full h-auto min-h-[560px] sm:min-h-[600px] md:min-h-0 md:h-full snap-center rounded-3xl overflow-hidden bg-stone-950 shadow-xl">
             {/* subtle ambient glow */}
             <div class="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-amber-500/10" />
 
-            <div class="relative z-10 w-full h-full p-6 md:p-10">
+            <div class="relative z-10 w-full h-full p-5 sm:p-6 md:p-10">
                 <div class="flex flex-col h-full gap-5 md:gap-7">
                 {/* Header */}
                 <div class="flex items-center gap-3 text-amber-300">
@@ -406,9 +405,9 @@ import TravelImage2 from "../assets/hobbies/IMG_4073.jpeg";
                 </div>
             </div>
         </div> -->
-        <div class="relative flex-none w-full h-full snap-center rounded-3xl overflow-hidden bg-stone-950 shadow-xl">
+        <div class="relative flex-none w-full h-auto min-h-[620px] sm:min-h-[640px] md:min-h-0 md:h-full snap-center rounded-3xl overflow-hidden bg-stone-950 shadow-xl">
 
-            <div class="relative z-10 w-full h-full p-10 md:p-14 flex flex-col gap-12">
+            <div class="relative z-10 w-full h-full p-6 sm:p-8 md:p-12 lg:p-14 flex flex-col gap-6 md:gap-10">
 
                 {/* Header */}
                 <div class="flex items-center gap-3 text-sky-300">
@@ -418,16 +417,16 @@ import TravelImage2 from "../assets/hobbies/IMG_4073.jpeg";
                 </span>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-12 gap-10">
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-10">
 
                 {/* Left — Big Statement */}
                 <div class="md:col-span-5 flex flex-col justify-between">
                     <div>
-                    <h3 class="text-4xl md:text-5xl font-semibold text-gray-100 tracking-tight leading-[1.05]">
+                    <h3 class="text-3xl sm:text-4xl md:text-5xl font-semibold text-gray-100 tracking-tight leading-[1.05]">
                         Always in learning mode.
                     </h3>
 
-                    <p class="mt-5 text-lg text-white/65 leading-relaxed">
+                    <p class="mt-4 md:mt-5 text-base sm:text-lg text-white/65 leading-relaxed">
                         Languages, systems, technologies, and the hidden structures behind how the world works.
                     </p>
                     </div>
@@ -441,7 +440,7 @@ import TravelImage2 from "../assets/hobbies/IMG_4073.jpeg";
                 <div class="md:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6">
 
                     {/* Language & Culture */}
-                    <div class="p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur">
+                    <div class="p-5 md:p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur">
                     <h4 class="text-white text-lg font-medium mb-3">
                         Language & Culture
                     </h4>
@@ -453,7 +452,7 @@ import TravelImage2 from "../assets/hobbies/IMG_4073.jpeg";
                     </div>
 
                     {/* Science & Systems */}
-                    <div class="p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur">
+                    <div class="p-5 md:p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur">
                     <h4 class="text-white text-lg font-medium mb-3">
                         Science & Systems
                     </h4>
@@ -465,7 +464,7 @@ import TravelImage2 from "../assets/hobbies/IMG_4073.jpeg";
                     </div>
 
                     {/* Tech & Play */}
-                    <div class="p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur">
+                    <div class="p-5 md:p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur">
                     <h4 class="text-white text-lg font-medium mb-3">
                         Tech & Play
                     </h4>
@@ -477,7 +476,7 @@ import TravelImage2 from "../assets/hobbies/IMG_4073.jpeg";
                     </div>
 
                     {/* Stories & Human Nature */}
-                    <div class="p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur">
+                    <div class="p-5 md:p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur">
                     <h4 class="text-white text-lg font-medium mb-3">
                         Stories & Human Nature
                     </h4>
@@ -508,11 +507,86 @@ import TravelImage2 from "../assets/hobbies/IMG_4073.jpeg";
             return;
         }
 
+        const getRealCards = () =>
+            Array.from(scrollContainer.children).filter(
+                (el) => !(el instanceof HTMLElement && el.dataset.loopClone),
+            );
+
         const getStep = () => {
-            const firstCard = scrollContainer.firstElementChild;
+            const cards = getRealCards();
+            const firstCard = cards[0];
             const cardWidth =
-                firstCard instanceof HTMLElement ? firstCard.clientWidth : 500;
-            return cardWidth + 16;
+                firstCard instanceof HTMLElement
+                    ? firstCard.getBoundingClientRect().width
+                    : 500;
+            const gap = parseFloat(getComputedStyle(scrollContainer).gap || "16");
+            return cardWidth + (Number.isNaN(gap) ? 16 : gap);
+        };
+
+        const withInstantScroll = (callback) => {
+            const prev = scrollContainer.style.scrollBehavior;
+            scrollContainer.style.scrollBehavior = "auto";
+            callback();
+            requestAnimationFrame(() => {
+                scrollContainer.style.scrollBehavior = prev;
+            });
+        };
+
+        if (!scrollContainer.dataset.loopPrepared) {
+            const cards = getRealCards();
+            if (cards.length >= 2) {
+                const firstClone = cards[0].cloneNode(true);
+                const lastClone = cards[cards.length - 1].cloneNode(true);
+
+                if (firstClone instanceof HTMLElement) {
+                    firstClone.dataset.loopClone = "first";
+                }
+                if (lastClone instanceof HTMLElement) {
+                    lastClone.dataset.loopClone = "last";
+                }
+
+                scrollContainer.insertBefore(lastClone, cards[0]);
+                scrollContainer.appendChild(firstClone);
+                scrollContainer.dataset.loopPrepared = "true";
+
+                // Start on the first real card (index 1 after prepending the last clone).
+                requestAnimationFrame(() => {
+                    withInstantScroll(() => {
+                        scrollContainer.scrollLeft = getStep();
+                    });
+                });
+            }
+        }
+
+        const syncLoopBounds = () => {
+            const cards = getRealCards();
+            if (cards.length < 2) return;
+
+            const step = getStep();
+            const firstRealOffset = step;
+            const lastRealOffset = step * cards.length;
+            const leftBoundary = step * 0.5;
+            const rightBoundary = step * (cards.length + 0.5);
+            const currentLeft = scrollContainer.scrollLeft;
+
+            if (currentLeft <= leftBoundary) {
+                withInstantScroll(() => {
+                    scrollContainer.scrollLeft = lastRealOffset;
+                });
+                return;
+            }
+
+            if (currentLeft >= rightBoundary) {
+                withInstantScroll(() => {
+                    scrollContainer.scrollLeft = firstRealOffset;
+                });
+            }
+        };
+
+        let settleTimer;
+        scrollContainer.onscroll = () => {
+            window.clearTimeout(settleTimer);
+            settleTimer = window.setTimeout(syncLoopBounds, 80);
         };
 
         // Use onclick so re-initializing after route transitions doesn't stack listeners.
