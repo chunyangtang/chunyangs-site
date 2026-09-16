@@ -1,0 +1,42 @@
+---
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+import AuthorList from './AuthorList.astro';
+import ExternalLink from './ExternalLink.astro';
+import PublicationMeta from './PublicationMeta.astro';
+import { detailHref } from '../lib/content';
+
+interface Props { entry: CollectionEntry<'publications'>; }
+const { entry } = Astro.props;
+const publication = entry.data;
+const thumbnail = publication.thumbnail ?? publication.image;
+const thumbnailAlt = publication.thumbnail
+  ? publication.thumbnailAlt ?? publication.title
+  : publication.imageAlt ?? publication.title;
+const detailUrl = detailHref(entry);
+const href = detailUrl ?? publication.links.find((link) => link.kind === 'paper')?.url;
+const external = Boolean(href && !detailUrl);
+const titleLinkClass = 'decoration-1 underline-offset-4 transition-colors hover:text-blue-600 hover:underline focus-visible:text-blue-600 focus-visible:underline dark:hover:text-blue-400 dark:focus-visible:text-blue-400';
+---
+
+<article class="flex flex-col gap-5 p-4 -mx-4 sm:flex-row sm:gap-6">
+  {thumbnail && (
+    <div class="aspect-[4/3] w-full self-start overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm sm:w-[220px] sm:shrink-0 dark:border-gray-700">
+      <Image src={thumbnail} alt={thumbnailAlt} width={660} class="h-full w-full object-contain" />
+    </div>
+  )}
+  <div class="min-w-0 flex-1">
+    <div class="mb-2">
+      <PublicationMeta publication={publication} />
+    </div>
+    <h3 class="mb-2 text-lg font-bold leading-snug text-gray-900 dark:text-gray-100">
+      {href ? (
+        external
+          ? <ExternalLink href={href} class={titleLinkClass}>{publication.title}</ExternalLink>
+          : <a href={href} class={titleLinkClass}>{publication.title}</a>
+      ) : publication.title}
+    </h3>
+    <p class="mb-3 text-sm leading-relaxed text-gray-600 dark:text-gray-400"><AuthorList authors={publication.authors} abbreviated /></p>
+    <p class="text-sm leading-relaxed text-gray-600 dark:text-gray-300">{publication.description}</p>
+  </div>
+</article>

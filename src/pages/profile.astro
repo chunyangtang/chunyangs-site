@@ -4,11 +4,12 @@ import { Image } from 'astro:assets';
 import { Download, Mail, Github, Linkedin, ExternalLink, GraduationCap } from 'lucide-react';
 import profileImage from '../assets/profile.jpg';
 
-import { education, publications, myName } from '../../data/cv';
+import { education } from '../../data/cv';
+import PublicationItem from '../components/PublicationItem.astro';
+import { getPublications } from '../lib/content';
 import { siteProfile } from '../../data/site';
 
-const isExternalUrl = (value: string | null | undefined) =>
-  typeof value === 'string' && /^https?:\/\//.test(value);
+const publications = await getPublications();
 
 const aboutLinkClass =
   'text-blue-600 dark:text-blue-400 font-medium decoration-2 underline-offset-3 decoration-blue-400/50 dark:decoration-blue-700/70 hover:text-blue-700 dark:hover:text-blue-300 hover:decoration-blue-500 dark:hover:decoration-blue-500 transition-colors';
@@ -81,16 +82,13 @@ const aboutLinkClass =
             I am a PhD student at <a href="https://collegeai.tsinghua.edu.cn/en/" target="_blank" rel="noopener noreferrer" class={aboutLinkClass}>College of AI</a>, 
             <a href="https://www.tsinghua.edu.cn/en/" target="_blank" rel="noopener noreferrer" class={aboutLinkClass}>Tsinghua University</a>  
             advised by <a href="https://media.au.tsinghua.edu.cn/info/1009/1112.htm" target="_blank" rel="noopener noreferrer" class={aboutLinkClass}>Prof. Qionghai Dai (戴琼海)</a>.
-            My current research focuses on <strong class="text-gray-900 dark:text-gray-100 font-semibold">AI for ophthalmology</strong>, particularly developing algorithms for detecting subtle lesions in fundus images. I am interested in translating advanced machine learning methods into clinically meaningful systems that can operate reliably in real-world environments.
+            My current research focuses on <strong class="text-gray-900 dark:text-gray-100 font-semibold">AI for ophthalmology</strong>, particularly developing algorithms for detecting subtle lesions in fundus images. I also work on translating advanced machine learning methods into clinically meaningful systems that can operate reliably in real-world environments.
           </p>
           <p class="text-gray-600 dark:text-gray-300 leading-relaxed mt-4">
-            I am interested in the evolving landscape of large-scale AI, including foundation models, LLMs, diffusion models, and multimodal vision–language architectures. I am particularly curious about their adaptation, alignment, and robustness in real-world domains.
+            I am broadly interested in the evolving landscape of large-scale AI, including foundation models, LLMs, diffusion models, and multimodal vision–language architectures. I am particularly curious about their adaptation, alignment, and robustness in real-world domains.
           </p>
           <p class="text-gray-600 dark:text-gray-300 leading-relaxed mt-4">
             Previously, I worked on photoelectronic computing and diffractive neural networks (D²NN), investigating optical approaches to computation. These experiences shaped my long-term interest in the relationship between computational architecture and intelligent behavior.
-          </p>
-          <p class="text-gray-600 dark:text-gray-300 leading-relaxed mt-4">
-            I am also intellectually interested in embodied intelligence and world-model-based learning, particularly how structured internal representations enable generalization, though this remains an exploratory direction in my work.
           </p>
         </section>
 
@@ -119,7 +117,7 @@ const aboutLinkClass =
                                         class="text-gray-500 hover:text-blue-600 transition-colors flex items-center gap-1 w-fit"
                                     >
                                         {edu.department}
-                                        <ExternalLink size={12} class="inline-block opacity-50" />
+                                        <ExternalLink size={12} className="inline-block opacity-50" />
                                     </a>
                                 ) : (
                                     <span class="text-gray-500">{edu.department}</span>
@@ -137,76 +135,11 @@ const aboutLinkClass =
 
         <hr class="border-gray-100 dark:border-gray-800" />
 
-        <section>
-            <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-8 flex items-center gap-3">
-                Publications
-            </h2>
-            
-            <div class="space-y-8">
-                {publications.map((pub) => (
-                    <div class="group flex flex-col sm:flex-row gap-6 hover:bg-gray-50/50 dark:hover:bg-gray-900/50 p-4 -mx-4 rounded-xl transition-colors border border-transparent hover:border-gray-100 dark:hover:border-gray-800">
-                        
-                        <div class="sm:w-32 sm:shrink-0 relative rounded-lg overflow-hidden border border-gray-100 dark:border-gray-800 shadow-sm">
-                             <Image 
-                                src={pub.image} 
-                                alt={pub.title} 
-                                width={300} 
-                                height={200}
-                                class="object-cover w-full h-32 sm:h-24 group-hover:scale-105 transition-transform duration-500" 
-                             />
-                        </div>
-
-                        <div class="flex-1 min-w-0"> <h3 class="text-lg font-bold text-gray-900 dark:text-gray-100 leading-tight mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                                {isExternalUrl(pub.links.pdf) ? (
-                                    <a href={pub.links.pdf} target="_blank" rel="noopener noreferrer" class="hover:underline decoration-blue-200 dark:decoration-blue-800 decoration-2 underline-offset-2">
-                                        {pub.title}
-                                    </a>
-                                ) : (
-                                    <span>{pub.title}</span>
-                                )}
-                            </h3>
-                            
-                            <p class="text-gray-600 dark:text-gray-400 text-sm mb-3 leading-relaxed">
-                                {pub.authors.split(myName).map((part, index, array) => (
-                                    <>
-                                        {part}
-                                        {index < array.length - 1 ? (
-                                            <strong class="text-gray-900 dark:text-gray-100 font-bold">{myName}</strong>
-                                        ) : null}
-                                    </>
-                                ))}
-                            </p>
-                            
-                            <div class="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm mt-auto">
-                                <span class={`px-2.5 py-0.5 rounded-md text-xs font-bold tracking-wide uppercase border ${
-                                    pub.type === 'Conference' ? 'bg-blue-50 dark:bg-blue-950/30 text-blue-700 dark:text-blue-300 border-blue-100 dark:border-blue-900/30' : 
-                                    'bg-purple-50 dark:bg-purple-950/30 text-purple-700 dark:text-purple-300 border-purple-100 dark:border-purple-900/30'
-                                }`}>
-                                    {pub.venue}
-                                </span>
-
-                                <div class="flex gap-3 text-gray-500 font-medium">
-                                    {isExternalUrl(pub.links.pdf) && (
-                                        <a href={pub.links.pdf} target="_blank" rel="noopener noreferrer" class="hover:text-gray-900 dark:hover:text-gray-100 hover:underline flex items-center gap-1 transition-colors">
-                                            PDF
-                                        </a>
-                                    )}
-                                    {isExternalUrl(pub.links.code) && (
-                                        <a href={pub.links.code} target="_blank" rel="noopener noreferrer" class="hover:text-gray-900 dark:hover:text-gray-100 hover:underline flex items-center gap-1 transition-colors">
-                                            Code
-                                        </a>
-                                    )}
-                                    {isExternalUrl(pub.links.website) && (
-                                        <a href={pub.links.website} target="_blank" rel="noopener noreferrer" class="hover:text-gray-900 dark:hover:text-gray-100 hover:underline flex items-center gap-1 transition-colors">
-                                            Website
-                                        </a>
-                                    )}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                ))}
-            </div>
+        <section id="publications" class="scroll-mt-24">
+          <h2 class="mb-8 text-2xl font-bold text-gray-900 dark:text-gray-100">Publications</h2>
+          <div class="space-y-8">
+            {publications.map((entry) => <PublicationItem entry={entry} />)}
+          </div>
         </section>
 
       </div>

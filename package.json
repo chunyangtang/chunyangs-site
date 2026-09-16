@@ -1,11 +1,12 @@
 {
   "name": "chunyangs-site",
   "type": "module",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "test": "npm run build && node --test tests/content.test.mjs",
     "astro": "astro"
   },
   "dependencies": {

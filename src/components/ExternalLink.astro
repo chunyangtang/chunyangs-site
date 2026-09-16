@@ -1,0 +1,17 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+import { ArrowUpRight } from 'lucide-react';
+
+interface Props extends Omit<HTMLAttributes<'a'>, 'href' | 'target' | 'rel'> {
+  href: string;
+  iconSize?: number;
+  iconClass?: string;
+}
+
+const { href, iconSize = 14, iconClass = 'ml-1', ...attributes } = Astro.props;
+---
+
+<a {...attributes} href={href} target="_blank" rel="noopener noreferrer">
+  <slot /><ArrowUpRight size={iconSize} className={`inline-block shrink-0 align-[-0.125em] ${iconClass}`} aria-hidden="true" />
+  <span class="sr-only"> (opens in a new tab)</span>
+</a>

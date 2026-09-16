@@ -1,29 +1,16 @@
 ---
-import { getCollection } from 'astro:content';
+import { getBlogPosts, contentHref, formatDate } from '../lib/content';
 import { ArrowRight, BookOpen, GraduationCap, Github, Mail, Linkedin, MapPin } from 'lucide-react';
 import { siteProfile } from '../../data/site';
 
-const getPostSlug = (post: { id: string; slug?: string }) =>
-  post.slug && post.slug.length > 0
-    ? post.slug
-    : post.id
-        .replace(/\/index\.(md|mdx)$/, '')
-        .replace(/\/index$/, '')
-        .replace(/\.(md|mdx)$/, '');
-
-const latestPost = (await getCollection('blog'))
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())[0] ?? null;
+const latestPost = (await getBlogPosts())[0] ?? null;
 
 const latestPostHref = latestPost
-  ? `/blog/${getPostSlug(latestPost)}`
+  ? contentHref(latestPost)
   : '/blog';
 const latestPostTitle = latestPost?.data.title ?? 'No posts yet';
 const latestPostDate = latestPost
-  ? latestPost.data.pubDate.toLocaleDateString(undefined, {
-      year: 'numeric',
-      month: 'short',
-      day: 'numeric',
-    })
+  ? formatDate(latestPost.data.pubDate)
   : 'Coming soon';
 
 const THIRTY_DAYS_MS = 30 * 24 * 60 * 60 * 1000;
@@ -95,13 +82,13 @@ const isLatestPostNew = latestPost
     </div>
     
     <div class="relative z-10 mt-4 flex items-center text-blue-600 dark:text-blue-400 text-sm font-medium">
-        Academic Profile <ArrowRight size={16} class="ml-1 group-hover:translate-x-1 transition-transform" />
+        Academic Profile <ArrowRight size={16} className="ml-1 group-hover:translate-x-1 transition-transform" />
     </div>
   </a>
 
   <a href={latestPostHref} class="md:col-span-1 md:row-span-1 rounded-3xl bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-100 dark:border-indigo-900/50 p-6 flex flex-col justify-between group hover:bg-indigo-100 dark:hover:bg-indigo-900/40 transition-colors">
       <div class="flex justify-between items-start">
-        <BookOpen size={24} class="text-indigo-600 dark:text-indigo-400" />
+        <BookOpen size={24} className="text-indigo-600 dark:text-indigo-400" />
         {isLatestPostNew && (
           <span class="text-xs font-bold bg-white dark:bg-indigo-900 px-2 py-1 rounded text-indigo-600 dark:text-indigo-300">NEW</span>
         )}
@@ -113,7 +100,7 @@ const isLatestPostNew = latestPost
   </a>
 
   <div class="md:col-span-1 md:row-span-1 rounded-3xl bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-100 dark:border-emerald-900/50 p-6 flex flex-col justify-between">
-      <MapPin size={24} class="text-emerald-600 dark:text-emerald-400" />
+      <MapPin size={24} className="text-emerald-600 dark:text-emerald-400" />
       <div>
            <h3 class="font-bold text-gray-800 dark:text-gray-200 text-lg">Beijing, CN</h3>
           <div class="flex items-center gap-2 mt-1">

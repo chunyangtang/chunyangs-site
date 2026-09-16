@@ -59,6 +59,7 @@ body {
 
 .markdown-content {
   color: var(--md-body);
+  overflow-wrap: break-word;
 }
 
 .markdown-content :where(h1, h2, h3, h4, h5, h6) {

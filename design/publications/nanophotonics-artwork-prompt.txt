@@ -1,0 +1,24 @@
+Use case: precise-object-edit / scientific-educational.
+Image 1 is the EDIT TARGET: the author's original scientific overview figure. Restore and adapt this actual artwork, with very high fidelity, rather than inventing a different illustration.
+
+Deliver one landscape 4:3 image, ideally 2048 x 1536, on white. It will become the artwork layer of a figure whose text is added separately as editable vector labels.
+
+Preserve the visual identity and finish of the source:
+- Keep the same three SQUARE application illustrations across the top: the softly shaded cream autonomous car seen in three-quarter view with lidar arcs; the green running robot giving a thumbs-up; the dense flowing bundle of blue transparent optical fibres with little signal marks. Their proportions, character, poses, colours, fine detail and soft printed-illustration style must remain as close to the source as possible. Do not replace them with simple outline icons, a side-view toy car, a squat mascot, or six empty parallel tubes.
+- Keep the delicate coloured glows around the illustration squares.
+- Keep the eight floating, gently tilted elliptical capability discs, arranged like the original: peach upper left, blue upper right, lilac upper middle, pale cream middle left, purple middle right, sage middle/lower centre, coral lower left, and cream with cyan rim lower right. Give them the original dimensional, slightly translucent lacquered surfaces, reflective coloured rims, iridescent highlights and soft cast shadows. The faces must have ample flat blank space for later labels.
+- Keep the softly blended vertical rainbow light behind the discs.
+- Keep the two large pale sage curved arrows at the sides, pointing upward on the left and downward on the right.
+- Preserve the substantial three-level perspective chip at the bottom: textured satin gold fabrication substrate; inset beige metallic device platform; central turquoise/blue material die. Use the original realistic soft texture, bevels, reflections and ambient shadows. Keep all three planes parallel and in one coherent perspective.
+
+The two requested changes:
+1. Recompose carefully for 4:3, a little wider and less vertically cramped. Rebalance spacing instead of stretching the car, robot, panels or chip. Preserve the overall source composition and generous white background.
+2. REMOVE ALL semantic text from the figure: headings above/between levels, the three captions, Drivers/Requirements, all eight disc labels and every label on the chip. Inpaint those areas naturally. Keep the underlying discs and chip label plaques, but leave them completely BLANK. Do not write replacement labels, lorem ipsum or numbers. Tiny decorative signal marks inside the fibre illustration may remain.
+
+Chip plaque layout must be geometrically clean and leave room for later vector text:
+- Material die: one wide blank top plaque, two smaller equal blank plaques below it with a clear gap, one centred blank title plaque below those. Four plaques total, aligned to that plane and separated on every side.
+- Device platform: one blank rail on each side, parallel to the perspective side edges; three separate blank plaques along the front edge (left technical label, centre level title, right technical label), with consistent gaps.
+- Gold substrate: one blank outer rail on each side; three separate blank plaques along the front edge, with consistent gaps and safe margins from the chip edge.
+No plaque should overlap, touch another plaque, or intrude into a neighbouring layer.
+
+Keep the source's nuanced, glossy scientific figure aesthetic. No flat SVG-style substitute, no cartoon restyling, no infographic cards, no new content, no extraneous objects, no watermark. This is a faithful text-free artwork restoration, not a redesign of the concept.

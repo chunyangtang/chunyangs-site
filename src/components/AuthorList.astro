@@ -1,0 +1,22 @@
+---
+import { siteProfile } from '../../data/site';
+
+interface Props {
+  authors: string[];
+  abbreviated?: boolean;
+}
+
+const { authors, abbreviated = false } = Astro.props;
+// Keep Chunyang visible even when a long author list is shortened in the overview.
+const limit = Math.max(5, authors.indexOf(siteProfile.name) + 1);
+const visible = abbreviated && authors.length > limit + 1 ? authors.slice(0, limit) : authors;
+---
+
+{visible.map((author, index) => (
+  <>
+    {index > 0 && ', '}
+    {author === siteProfile.name ? (
+      <strong class="font-semibold text-gray-900 dark:text-gray-100">{author}</strong>
+    ) : author}
+  </>
+))}{visible.length < authors.length && ', et al.'}

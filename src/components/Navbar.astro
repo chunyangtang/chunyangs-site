@@ -10,7 +10,12 @@ const normalizePath = (value: string) => {
 };
 
 const currentPath = normalizePath(Astro.url.pathname);
-const isActive = (href: string) => normalizePath(href) === currentPath;
+const isActive = (href: string) => {
+  const path = normalizePath(href);
+  return path === currentPath
+    || (path !== '/' && currentPath.startsWith(`${path}/`))
+    || (path === '/profile' && currentPath.startsWith('/publications/'));
+};
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -69,7 +74,7 @@ const navLinks = [
         aria-expanded="false"
       >
         <Menu id="mobile-menu-open-icon" size={20} />
-        <X id="mobile-menu-close-icon" size={20} class="hidden" />
+        <X id="mobile-menu-close-icon" size={20} className="hidden" />
       </button>
     </div>
   </div>

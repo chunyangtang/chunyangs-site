@@ -1,46 +1,28 @@
 ---
-import { getCollection, render } from 'astro:content';
+import { render, type CollectionEntry } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
+import MathStyles from '../../components/MathStyles.astro';
+import { getBlogPosts, formatDate } from '../../lib/content';
 
-// 1. Generate a path for EVERY post found in src/content/blog
 export async function getStaticPaths() {
-	const posts = await getCollection('blog');
-	return posts.reduce((paths, post) => {
-		const normalizedSlug =
-			post.slug && post.slug.length > 0
-				? post.slug
-				: post.id
-						.replace(/\/index\.(md|mdx)$/, '')
-						.replace(/\/index$/, '')
-						.replace(/\.(md|mdx)$/, '');
-		if (!normalizedSlug) return paths;
-
-		paths.push({
-			params: { slug: normalizedSlug },
-			props: post,
-		});
-
-		return paths;
-	}, []);
+  return (await getBlogPosts()).map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
 }
 
-const post = Astro.props;
+interface Props { post: CollectionEntry<'blog'>; }
+const { post } = Astro.props;
 const { Content } = await render(post);
 ---
 
-<Layout title={post.data.title}>
-    <link
-        slot="head"
-        rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
-        integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
-        crossorigin="anonymous"
-    />
+<Layout title={post.data.title} description={post.data.description}>
+    <MathStyles slot="head" />
 
 	<article class="max-w-3xl mx-auto px-4 py-10">
         <div class="mb-8 text-center">
             <span class="text-sm text-gray-500 dark:text-gray-400 font-mono">
-                {post.data.pubDate.toLocaleDateString()}
+                {formatDate(post.data.pubDate)}
             </span>
             <h1 class="text-4xl md:text-5xl font-bold mt-2 mb-4 tracking-tight text-gray-900 dark:text-gray-100">
                 {post.data.title}

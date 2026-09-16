@@ -1,0 +1,41 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { defaultVenueAccent, getVenue } from '../../data/venues';
+import { formatDate } from '../lib/content';
+
+interface Props {
+  publication: CollectionEntry<'publications'>['data'];
+  fullDate?: boolean;
+}
+
+const { publication, fullDate = false } = Astro.props;
+const venue = getVenue(publication.venue);
+---
+
+<div class:list={['publication-meta flex flex-wrap items-center gap-x-3 gap-y-2 font-medium', fullDate ? 'text-sm' : 'text-xs']}>
+  <span
+    class="venue-badge rounded-md border px-2.5 py-1 text-xs"
+    style={`--venue-accent: ${venue.accent ?? defaultVenueAccent}`}
+    data-venue={publication.venue}
+  >{venue.name}</span>
+  <span class="flex flex-wrap items-baseline gap-x-1.5 gap-y-1 text-gray-500 dark:text-gray-400">
+    <span>{venue.type}</span>
+    {publication.articleType && <><span aria-hidden="true">·</span><span>{publication.articleType}</span></>}
+    <span aria-hidden="true">·</span>
+    <time datetime={publication.pubDate.toISOString()}>{fullDate ? formatDate(publication.pubDate) : publication.pubDate.getUTCFullYear()}</time>
+  </span>
+</div>
+
+<style>
+  .venue-badge {
+    color: color-mix(in srgb, var(--venue-accent) 55%, #111827);
+    background-color: color-mix(in srgb, var(--venue-accent) 8%, white);
+    border-color: color-mix(in srgb, var(--venue-accent) 22%, white);
+  }
+
+  :global(html.dark) .venue-badge {
+    color: color-mix(in srgb, var(--venue-accent) 65%, white);
+    background-color: color-mix(in srgb, var(--venue-accent) 12%, #030712);
+    border-color: color-mix(in srgb, var(--venue-accent) 32%, #030712);
+  }
+</style>

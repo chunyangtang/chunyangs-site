@@ -1,0 +1,35 @@
+---
+import { Image } from 'astro:assets';
+import { render, type CollectionEntry } from 'astro:content';
+import DetailLayout from '../../layouts/DetailLayout.astro';
+import ProjectStatus from '../../components/ProjectStatus.astro';
+import ResourceLinks from '../../components/ResourceLinks.astro';
+import { getProjects, formatDate } from '../../lib/content';
+
+export async function getStaticPaths() {
+  return (await getProjects())
+    .filter((entry) => entry.data.detailPage)
+    .map((entry) => ({ params: { id: entry.id }, props: { entry } }));
+}
+
+interface Props { entry: CollectionEntry<'projects'>; }
+const { entry } = Astro.props;
+const project = entry.data;
+const { Content } = await render(entry);
+---
+
+<DetailLayout title={project.title} description={project.description} backHref="/projects" backLabel="Back to projects">
+  <div slot="eyebrow" class="flex flex-wrap items-center gap-3">
+    <ProjectStatus status={project.status} />
+    <span class="text-sm text-gray-500 dark:text-gray-400">{project.category}</span>
+  </div>
+  <div slot="metadata" class="mt-5 flex flex-wrap gap-2">
+    {project.tech.map((tech) => <span class="rounded-md border border-gray-200 px-2.5 py-1 text-xs font-medium text-gray-600 dark:border-gray-700 dark:text-gray-300">{tech}</span>)}
+  </div>
+  <ResourceLinks slot="actions" links={project.links} />
+  <figure slot="figure" class="mb-10 overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm dark:border-gray-700 sm:mb-14">
+    <Image src={project.image} alt={project.imageAlt ?? project.title} width={1440} widths={[640, 960, 1440]} sizes="(max-width: 1024px) calc(100vw - 32px), 976px" loading="eager" class="h-auto w-full" />
+  </figure>
+  <Content />
+  {project.updatedDate && <p slot="after-content" class="mt-10 text-xs text-gray-500 dark:text-gray-400">Updated <time datetime={project.updatedDate.toISOString()}>{formatDate(project.updatedDate)}</time></p>}
+</DetailLayout>

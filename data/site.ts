@@ -3,7 +3,7 @@ export const siteProfile = {
   role: "PhD Candidate",
   affiliation: "Tsinghua University",
   bio: "Advancing AI for medical vision. Connecting large-scale models with real-world impact.",
-  email: "reach_chunyang@outlook.com",
+  email: "chunyangtang@outlook.com",
   githubUrl: "https://github.com/chunyangtang",
   linkedinUrl: "https://linkedin.com/in/chunyang-tang-12a34634a",
   googleScholarUrl: "https://scholar.google.com/citations?hl=en&user=uJTTeGEAAAAJ",
