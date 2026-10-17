@@ -19,7 +19,7 @@ image: ./overview.png
 imageAlt: "Nanotechnology-enabled optical computing in large-scale AI models, with six panels illustrating spatial encoding, large-scale metasurfaces, polarization and wavelength multiplexing, fast reconfiguration, and nonlinear operations."
 imageCaption: "Nanotechnology-enabled optical computing in large-scale AI models. Approaches to scaling, multiplexing, reconfiguration, and nonlinear operations."
 imageCredit: "Chen et al., Nature Nanotechnology (2026)."
-contribution: 'I drafted the “Large-scale AI models” subsection within the “Nanotechnology-enabled optical computing” section.'
+contribution: 'I drafted the “Large-scale AI models” subsection within the “Nanotechnology-enabled optical computing” section. I synthesized research on scalable optical neuron arrays, multiplexed parallel processing, rapid weight reconfiguration, and nonlinear operations, relating advances in nanophotonic materials and devices to the computational requirements of large-scale AI models.'
 links:
   - label: Read paper
     url: https://www.nature.com/articles/s41565-026-02264-4

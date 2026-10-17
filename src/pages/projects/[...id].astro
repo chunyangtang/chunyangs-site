@@ -28,7 +28,7 @@ const { Content } = await render(entry);
   </div>
   <ResourceLinks slot="actions" links={project.links} />
   <figure slot="figure" class="mb-10 overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm dark:border-gray-700 sm:mb-14">
-    <Image src={project.image} alt={project.imageAlt ?? project.title} width={1440} widths={[640, 960, 1440]} sizes="(max-width: 1024px) calc(100vw - 32px), 976px" loading="eager" class="h-auto w-full" />
+    <Image src={project.image} alt={project.imageAlt ?? project.title} width={1440} widths={[640, 960, 1440]} sizes="(min-width: 800px) 766px, calc(100vw - 34px)" loading="eager" class="h-auto w-full" />
   </figure>
   <Content />
   {project.updatedDate && <p slot="after-content" class="mt-10 text-xs text-gray-500 dark:text-gray-400">Updated <time datetime={project.updatedDate.toISOString()}>{formatDate(project.updatedDate)}</time></p>}

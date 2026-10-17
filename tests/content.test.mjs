@@ -46,7 +46,7 @@ test('blog migration preserves both article URLs, images, and math rendering', (
   assert.equal(listing.includes('/index.md'), false);
 });
 
-test('all six supplied media links are retained with exact destinations', () => {
+test('all seven supplied media links are retained with exact destinations', () => {
   const nano = readPage('publications/nanophotonics-optical-computing/index.html');
   const clinic = readPage('publications/ai-agent-eye-clinic/index.html');
   for (const url of [
@@ -57,6 +57,7 @@ test('all six supplied media links are retained with exact destinations', () => 
   ]) assert.ok(nano.includes(`href="${url}"`), url);
   for (const url of [
     'https://www.sciencealert.com/china-just-let-ai-run-an-eye-clinic-heres-what-happened',
+    'https://www.tsinghua.edu.cn/info/1175/128317.htm',
     'https://mp.weixin.qq.com/s/vyN4WmRLanBHyWb_OMGPVg',
   ]) assert.ok(clinic.includes(`href="${url}"`), url);
 });

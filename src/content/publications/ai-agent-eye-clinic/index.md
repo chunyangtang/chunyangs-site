@@ -35,7 +35,7 @@ image: ./overview.png
 imageAlt: "Comparison of conventional ophthalmic care with the proposed AI-TEC pathway, connecting agents before, during, and after visits while retaining ophthalmologists' final clinical decisions."
 imageCaption: "The proposed AI-TEC care pathway connects specialized agents across the patient journey, with ophthalmologists responsible for final clinical decisions."
 imageCredit: "Yan et al., Nature Medicine (2026)."
-contribution: "I contributed to data collection and processing and was a main contributor to the development and deployment of the AI-TEC system."
+contribution: "I was a main contributor to the development and clinical deployment of AI-TEC at Beijing Tsinghua Changgung Hospital. My work also covered clinical data collection and processing."
 links:
   - label: Read paper
     url: https://www.nature.com/articles/s41591-026-04631-z
@@ -45,6 +45,10 @@ media:
     outlet: ScienceAlert
     url: https://www.sciencealert.com/china-just-let-ai-run-an-eye-clinic-heres-what-happened
     featured: true
+  - title: "北京清华长庚医院黄天荫团队合作构建清华AI眼科诊所多智能体临床框架"
+    outlet: 清华新闻网
+    url: https://www.tsinghua.edu.cn/info/1175/128317.htm
+    institutional: true
   - title: "Nature Medicine | 医疗AI如何真正进入临床？清华AI眼科诊所的探索和经验"
     outlet: 北京视觉科学与转化医学研究中心
     url: https://mp.weixin.qq.com/s/vyN4WmRLanBHyWb_OMGPVg

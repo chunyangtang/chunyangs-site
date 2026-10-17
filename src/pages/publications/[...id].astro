@@ -31,7 +31,7 @@ const { Content } = await render(entry);
     {(publication.contribution || publication.media.length > 0) && (
       <div class="mt-7 border-t border-gray-200 pt-6 dark:border-gray-800">
         {publication.contribution && (
-          <section aria-labelledby="contribution-heading" class="max-w-3xl">
+          <section aria-labelledby="contribution-heading">
             <h2 id="contribution-heading" class="text-sm font-semibold text-gray-900 dark:text-gray-100">My role</h2>
             <p class="mt-2 leading-relaxed text-gray-700 dark:text-gray-300">{publication.contribution}</p>
           </section>
@@ -52,9 +52,9 @@ const { Content } = await render(entry);
     )}
   </Fragment>
   {publication.image && (
-    <figure slot="figure" class="mx-auto mb-10 w-full max-w-3xl sm:mb-14">
+    <figure slot="figure" class="mb-10 sm:mb-14">
       <a href={publication.image.src} target="_blank" rel="noopener noreferrer" class="block overflow-hidden rounded-2xl border border-gray-200 bg-white p-3 sm:p-6 dark:border-gray-700" aria-label={`Open full-size figure for ${publication.title}`}>
-        <Image src={publication.image} alt={publication.imageAlt ?? publication.title} width={1600} widths={[640, 960, 1600, 2400]} sizes="(min-width: 816px) 718px, (min-width: 640px) calc(100vw - 98px), calc(100vw - 58px)" loading="eager" class="h-auto w-full object-contain" />
+        <Image src={publication.image} alt={publication.imageAlt ?? publication.title} width={1600} widths={[640, 960, 1600, 2400]} sizes="(min-width: 800px) 718px, (min-width: 640px) calc(100vw - 82px), calc(100vw - 58px)" loading="eager" class="h-auto w-full object-contain" />
       </a>
       <figcaption class="mt-3 px-1 text-xs leading-relaxed text-gray-500 dark:text-gray-400">
         {publication.imageCaption} {publication.imageCredit}
@@ -64,7 +64,7 @@ const { Content } = await render(entry);
   <Content />
   <Fragment slot="after-content">
     {publication.media.length > 0 && (
-      <section id="coverage" aria-labelledby="coverage-heading" class="mt-12 scroll-mt-24">
+      <section id="coverage" aria-labelledby="coverage-heading" class="mt-12">
         <h2 id="coverage-heading" class="mb-4 text-2xl font-bold text-gray-900 dark:text-gray-100">Media coverage</h2>
         <ul class="divide-y divide-gray-200 border-y border-gray-200 dark:divide-gray-800 dark:border-gray-800">
           {publication.media.map((item) => (

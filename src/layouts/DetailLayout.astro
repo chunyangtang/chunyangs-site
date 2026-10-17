@@ -8,9 +8,11 @@ interface Props {
   description: string;
   backHref: string;
   backLabel: string;
+  figureWidth?: 'reading' | 'wide';
 }
 
-const { title, description, backHref, backLabel } = Astro.props;
+const { title, description, backHref, backLabel, figureWidth = 'reading' } = Astro.props;
+const backLinkClass = 'inline-flex min-h-11 items-center gap-2 rounded-sm py-2 text-sm font-medium text-gray-500 transition-colors hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400';
 ---
 
 <Layout title={`${title} | Chunyang Tang`} description={description}>
@@ -18,11 +20,13 @@ const { title, description, backHref, backLabel } = Astro.props;
     <MathStyles />
     <slot name="head" />
   </Fragment>
-  <article class="mx-auto max-w-5xl px-4 py-8 pb-20 sm:px-6 sm:py-12 sm:pb-24">
-    <a href={backHref} class="mb-9 inline-flex items-center gap-2 text-sm font-medium text-gray-500 transition-colors hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400">
-      <ArrowLeft size={16} aria-hidden="true" /> {backLabel}
-    </a>
-    <header class="mx-auto mb-8 max-w-4xl sm:mb-10">
+  <article class="detail-page page-container py-8 pb-20 sm:py-12 sm:pb-24">
+    <nav aria-label="Return navigation" class="reading-width mb-8 sm:mb-10">
+      <a href={backHref} data-return-top class={backLinkClass}>
+        <ArrowLeft size={16} aria-hidden="true" /> {backLabel}
+      </a>
+    </nav>
+    <header class="reading-width mb-8 sm:mb-10">
       <slot name="eyebrow" />
       <h1 class="mt-4 text-3xl font-bold leading-[1.15] tracking-tight text-gray-900 sm:text-4xl lg:text-5xl dark:text-gray-100">{title}</h1>
       <slot name="metadata" />
@@ -30,12 +34,67 @@ const { title, description, backHref, backLabel } = Astro.props;
       <div class="mt-6"><slot name="actions" /></div>
       <slot name="context" />
     </header>
-    <slot name="figure" />
-    <div class="mx-auto max-w-3xl">
+    {Astro.slots.has('figure') && (
+      <div class={figureWidth === 'wide' ? 'mx-auto w-full max-w-5xl' : 'reading-width'}>
+        <slot name="figure" />
+      </div>
+    )}
+    <div data-detail-content class="reading-width flow-root">
       <div class="markdown-content prose prose-lg max-w-none prose-headings:font-bold dark:prose-invert">
         <slot />
       </div>
       <slot name="after-content" />
     </div>
+    <footer data-return-bottom hidden class="reading-width mt-12 border-t border-gray-200 pt-5 dark:border-gray-800">
+      <a href={backHref} class={backLinkClass}>
+        <ArrowLeft size={16} aria-hidden="true" /> {backLabel}
+      </a>
+    </footer>
   </article>
 </Layout>
+
+<script>
+  let cleanup = () => {};
+
+  function initReturnLink() {
+    cleanup();
+    const article = document.querySelector<HTMLElement>('.detail-page');
+    const topLink = article?.querySelector<HTMLElement>('[data-return-top]');
+    const content = article?.querySelector<HTMLElement>('[data-detail-content]');
+    const footer = article?.querySelector<HTMLElement>('[data-return-bottom]');
+    if (!article || !topLink || !content || !footer) return;
+
+    const update = () => {
+      // Exclude the optional footer so it cannot create its own overflow.
+      const pageHeight = content.getBoundingClientRect().bottom + window.scrollY
+        + parseFloat(getComputedStyle(article).paddingBottom);
+      const show = pageHeight > window.innerHeight + 1
+        && topLink.getBoundingClientRect().bottom < 0;
+      if (footer.hidden !== !show) footer.hidden = !show;
+    };
+
+    const intersection = new IntersectionObserver(update);
+    const resize = new ResizeObserver(update);
+    intersection.observe(topLink);
+    resize.observe(article);
+    window.addEventListener('resize', update);
+    update();
+
+    cleanup = () => {
+      intersection.disconnect();
+      resize.disconnect();
+      window.removeEventListener('resize', update);
+    };
+  }
+
+  initReturnLink();
+  document.addEventListener('astro:page-load', initReturnLink);
+  document.addEventListener('astro:before-swap', () => cleanup());
+</script>
+
+<style>
+  /* Clear the fixed site header when following section links. */
+  .detail-page :global([id]) {
+    scroll-margin-top: 6rem;
+  }
+</style>
