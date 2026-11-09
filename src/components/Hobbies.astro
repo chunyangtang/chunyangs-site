@@ -1,5 +1,6 @@
 ---
 import { Image } from "astro:assets";
+import ExternalLink from "./ExternalLink.astro";
 import {
     Camera,
     Dumbbell,
@@ -11,9 +12,9 @@ import {
     Globe,
     Sparkles,
 } from "lucide-react";
-import photoImage from "../assets/hobbies/DSC_1124.jpeg";
+import photoImage from "../assets/hobbies/shibuya-night.jpg";
 import RunningImage from "../assets/hobbies/IMG_1638.jpeg";
-import MusicImage from "../assets/hobbies/TS12_AlbumCover.png";
+import MusicImage from "../assets/hobbies/justice-complete-edition.jpg";
 import TravelImage1 from "../assets/hobbies/IMG_3842.jpeg";
 import TravelImage2 from "../assets/hobbies/IMG_4073.jpeg";
 ---
@@ -178,19 +179,22 @@ import TravelImage2 from "../assets/hobbies/IMG_4073.jpeg";
             <div class="md:w-2/3 relative h-72 sm:h-90 md:h-full bg-gray-100 dark:bg-gray-800">
                 <Image
                     src={photoImage}
-                    alt="Photography"
+                    alt="Illuminated billboards and umbrellas at Shibuya Crossing in Tokyo, Japan, at night."
                     class="absolute inset-0 w-full h-full object-cover"
                     width={1200}
                     height={800}
                 />
+                <div class="absolute bottom-3 left-3 px-3 py-1.5 rounded-full bg-black/45 border border-white/10 text-xs text-white/85 backdrop-blur">
+                    Shibuya, Japan
+                </div>
             </div>
         </div>
 
-        <div class="relative flex-none w-full h-full snap-center rounded-3xl overflow-hidden bg-black shadow-xl shadow-purple-900/20">
+        <div class="relative flex-none w-full h-full snap-center rounded-3xl overflow-hidden bg-black shadow-xl shadow-zinc-900/20">
         {/* Blurred background derived from album cover */}
         <Image
             src={MusicImage}
-            alt="Album cover background"
+            alt=""
             class="absolute inset-0 w-full h-full object-cover opacity-35 blur-3xl scale-125"
             width={120}
             height={120}
@@ -199,55 +203,61 @@ import TravelImage2 from "../assets/hobbies/IMG_4073.jpeg";
         <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/55 to-black/70" />
 
         <div class="relative z-10 w-full h-full flex flex-col md:flex-row items-start md:items-center justify-center p-5 sm:p-6 md:p-12 gap-6 md:gap-16">
-            {/* Album cover (smaller) */}
+            {/* Album cover */}
             <div class="shrink-0">
             <div class="relative w-48 sm:w-56 md:w-64 aspect-square rounded-2xl overflow-hidden shadow-2xl border border-white/15 bg-zinc-900">
                 <Image
                 src={MusicImage}
-                alt="Album Art"
+                alt="Justice (The Complete Edition) album cover by Justin Bieber"
                 class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                 width={700}
                 height={700}
                 />
                 {/* subtle glass highlight */}
                 <div class="absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent opacity-25 pointer-events-none" />
-
-                {/* small badge in corner */}
-                <div class="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-black/55 border border-white/15 text-xs font-mono text-white/90 backdrop-blur">
-                Top Song · 50 streams
-                </div>
             </div>
-
-            {/* “Listening age” callout (optional, from your Wrapped) */}
-            <!-- <div class="mt-4 flex items-center justify-center">
-                <div class="px-3 py-1.5 rounded-full bg-white/10 border border-white/10 text-sm text-white/85 backdrop-blur">
-                Listening age: <span class="font-semibold text-white">31</span>
-                <span class="text-white/60"> · early 2010s core</span>
-                </div>
-            </div> -->
             </div>
 
             {/* Text content */}
-            <div class="w-full md:w-[30rem] text-gray-100">
-            <div class="flex items-center gap-3 text-pink-300 mb-4 md:mb-5">
-                <Disc size={22} className="animate-spin-slow" />
+            <div class="w-full min-w-0 md:w-[30rem] text-gray-100">
+            <div class="flex items-center gap-3 text-white/60 mb-4 md:mb-5">
+                <Disc size={20} className="animate-spin-slow" aria-hidden="true" />
                 <span class="font-mono text-xs uppercase tracking-widest">Now Playing</span>
             </div>
 
-            <h3 class="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tighter leading-[0.95] mb-3">
-                My 2025 Sound
+            <h3 class="text-3xl sm:text-4xl font-semibold tracking-tight leading-tight mb-4">
+                My 2026 Sound
             </h3>
 
-            <p class="text-base sm:text-lg text-gray-200/90 font-light mb-5 md:mb-6">
-                <span class="font-semibold text-white">The Fate of Ophelia</span>
+            <p class="text-base sm:text-lg text-white/85 mb-2">
+                <span class="font-semibold text-white">Name</span>
                 <span class="text-white/60"> · </span>
-                <span class="text-white/85">Taylor Swift</span>
+                Justin Bieber feat. Tori Kelly
+            </p>
+            <p class="text-sm leading-relaxed text-white/60">
+                Justice (The Complete Edition)
             </p>
 
-            {/* Top genres as ranked chips */}
-            <div class="mb-6">
+            <div class="mt-4 flex flex-wrap items-center gap-x-5 gap-y-1 text-sm">
+                <span class="text-white/50">Listen on</span>
+                <ExternalLink
+                    href="https://music.apple.com/us/song/name-feat-tori-kelly/1588044819"
+                    class="inline-flex min-h-11 items-center whitespace-nowrap font-medium text-white/85 transition-colors hover:text-white"
+                >
+                    Apple Music
+                </ExternalLink>
+                <ExternalLink
+                    href="https://open.spotify.com/track/6EKDPhgCDL2cwRvloAEwSP"
+                    class="inline-flex min-h-11 items-center whitespace-nowrap font-medium text-white/85 transition-colors hover:text-white"
+                >
+                    Spotify
+                </ExternalLink>
+            </div>
+
+            {/* Listening tastes */}
+            <div class="mt-6 border-t border-white/10 pt-5">
                 <div class="text-xs font-mono uppercase tracking-widest text-white/60 mb-2">
-                Top genres
+                Favorite genres
                 </div>
                 <div class="flex flex-wrap gap-2">
                 {[
@@ -263,23 +273,6 @@ import TravelImage2 from "../assets/hobbies/IMG_4073.jpeg";
                 ))}
                 </div>
             </div>
-
-            {/* “Energy” bar (semantic, not fake timestamps) */}
-            <div class="mb-2">
-                <div class="flex justify-between text-xs font-mono text-white/55 mb-2">
-                <span>Replay energy</span>
-                <span>50 plays</span>
-                </div>
-                <div class="w-full h-2 bg-white/15 rounded-full overflow-hidden">
-                {/* pick a percentage that feels right; 50 streams could map to “high” */}
-                <div class="w-[72%] h-full bg-pink-400 rounded-full" />
-                </div>
-            </div>
-
-            {/* Small footer vibe line */}
-            <p class="mt-5 text-sm text-white/60">
-                Soft pop heart, theatre kid edge, a little club-night electro, and a K-pop switch-up.
-            </p>
             </div>
         </div>
         </div>

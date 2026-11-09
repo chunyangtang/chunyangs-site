@@ -22,8 +22,8 @@ const href = detailHref(entry);
       <div class="h-3 w-3 rounded-full bg-amber-400/80"></div>
       <div class="h-3 w-3 rounded-full bg-green-400/80"></div>
     </div>
-    <div class="relative aspect-video overflow-hidden bg-gray-50 dark:bg-gray-800">
-      <Image src={project.image} alt={project.imageAlt ?? project.title} width={800} height={450} class="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" />
+    <div class:list={['relative aspect-video overflow-hidden', project.thumbnailFit === 'contain' ? 'bg-white' : 'bg-gray-50 dark:bg-gray-800', project.imagePadding && 'p-3 sm:p-4']}>
+      <Image src={project.image} alt={project.imageAlt ?? project.title} width={800} height={450} fit={project.thumbnailFit} class:list={['h-full w-full', project.thumbnailFit === 'contain' ? 'object-contain' : 'object-cover transition-transform duration-700 ease-out group-hover:scale-105']} />
     </div>
   </div>
   <div class:list={['flex min-w-0 flex-col justify-center md:col-span-5', index % 2 === 0 ? 'md:order-2' : 'md:order-1']}>

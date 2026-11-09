@@ -139,6 +139,42 @@ body {
   border-radius: 0.875rem;
 }
 
+/* Keep project screenshots within the reading column, with legible transparent artwork. */
+.markdown-content .project-figure {
+  margin-block: 2rem;
+}
+
+.markdown-content .project-figure p {
+  margin: 0;
+}
+
+.markdown-content .project-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  background: white;
+}
+
+.markdown-content .project-figure--padded img {
+  box-sizing: border-box;
+  padding: clamp(1rem, 3vw, 1.5rem);
+}
+
+.markdown-content .project-figure--transparent img {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+}
+
+.markdown-content .project-figure figcaption {
+  margin-top: 0.75rem;
+  padding-inline: 0.25rem;
+  color: var(--md-muted);
+  font-size: 0.75rem;
+  line-height: 1.6;
+}
+
 .markdown-content :where(table) {
   border: 1px solid var(--md-border);
   border-radius: 0.75rem;

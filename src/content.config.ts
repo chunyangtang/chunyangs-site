@@ -76,6 +76,8 @@ const projects = defineCollection({
     order: z.number().int().nonnegative(),
     image: image(),
     imageAlt: z.string().optional(),
+    thumbnailFit: z.enum(['cover', 'contain']).default('cover'),
+    imagePadding: z.boolean().default(false),
   }),
 });
 

@@ -61,6 +61,7 @@ Each item is a folder containing `index.md` and its images. Frontmatter supplies
 - Set `detailPage: true` to give an item its own page. Publication pages need a Markdown introduction; project pages can start with their summary, screenshot, and resources.
 - Publications appear newest first by `pubDate`; projects follow their numeric `order`.
 - Store images beside the entry and use relative paths such as `image: ./overview.png`. Provide descriptive alt text. Publications can have a separate 4:3 `thumbnail` for the listing and a larger `image` with a caption for the detail page.
+- For project diagrams, set `thumbnailFit: contain` to show the whole cover and `imagePadding: true` to leave room around it.
 - Use `contribution` for a concise account of your role. Add reports to `media`, setting `featured: true` for selected coverage near the introduction and `institutional: true` for an institution's own reporting.
 - Register journal and conference names in `data/venues.ts` and reference the venue ID in each publication.
 
